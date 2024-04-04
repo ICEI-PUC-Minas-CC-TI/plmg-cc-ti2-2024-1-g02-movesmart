@@ -1,0 +1,64 @@
+/* Estilos gerais do corpo do documento */
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Define a fonte padrão */
+    margin: 0; /* Remove margens */
+    padding: 0; /* Remove preenchimentos */
+}
+
+/* Estilos para o contêiner */
+.container {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Estilos para o cabeçalho */
+.container h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para o parágrafo */
+.container p {
+    margin-bottom: 20px;
+}
+
+/* Estilos para o input de email */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-group button {
+    width: 28%;
+    padding: 15px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para o link "Não, obrigado" */
+.no-email-button {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.no-email-button:hover {
+    text-decoration: underline;
+}

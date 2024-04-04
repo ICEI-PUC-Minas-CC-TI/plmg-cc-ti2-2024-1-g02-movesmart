@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../css/planosCustos.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Planos - MoveSmart</title>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Barra de Navegação -->
+        <nav>
+            <!-- Responsividade -->
+            <input type="checkbox" id="sidebar-active">
+            <label for="sidebar-active" class="open-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                </svg>
+            </label>
+            <!-- Responsividade -->
+            <label id="overlay" for="sidebar-active"></label>
+            <div class="links-container">
+                <label for="sidebar-active" class="close-sidebar-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg>
+                </label>
+                <!-- Itens de Navegação -->
+                <a class="home-link" href="../home.html">Home</a> 
+                <a class="mapa-link" href="main.html">Mapa</a>                      <!--Link html-->
+                <!-- <a class="planos-link" href="#">Planos</a>          Link html       -->
+                <a class="chatbot-link" href="chatbot.html">Chatbot</a>             <!--Link html--> 
+                <a class="notificação-link" href="notificacao.html">Notificação</a> <!--Link html-->
+            </div>
+        </nav>
+    </header>
+    <!-- Fim Header -->
+    <!-- Main -->
+    <main>
+        <!-- Plano de Custos -->
+        <div class="container" style="margin-top: 150px;">
+            <div class="card">
+                <div class="card-title">
+                    <h2>Básico</h2>
+                    <p><i class="fa fa-rupee"></i><span>0</span>/mês</p>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li><i class="fa fa-check-circle"></i>Anúncios</li>
+                        <li><i class="fa fa-check-circle"></i>Visualização do mapa e pontos de ônibus</li>
+                        <li><i class="fa fa-times-circle"></i>Chatbot</li>
+                        <li><i class="fa fa-check-circle"></i>Suporte</li>
+                    </ul>
+                    <button><a href="#">Já adquirido!</a></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <h2>Iniciante</h2>
+                    <p><i class="fa fa-rupee"></i><span>30</span>/mês</p>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li><i class="fa fa-check-circle"></i>Redução de anúncios</li>
+                        <li><i class="fa fa-check-circle"></i>Visualização em tempo real da localização dos ônibus</li>
+                        <li><i class="fa fa-check-circle"></i>Chatbot</li>
+                        <li><i class="fa fa-check-circle"></i>Suporte 12 horas por dia</li>
+                    </ul>
+                    <button><a href="#">Comprar agora</a></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <h2>Premium</h2>
+                    <p><i class="fa fa-rupee"></i><span>50</span>/mês</p>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li><i class="fa fa-check-circle"></i>Sem anúncios</li>
+                        <li><i class="fa fa-check-circle"></i>Alguns descontos em passagens</li>
+                        <li><i class="fa fa-check-circle"></i>Chatbot</li>
+                        <li><i class="fa fa-check-circle"></i>Suporte 24 horas por dia</li>
+                    </ul>
+                    <button><a href="#">Comprar agora</a></button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Fim Main -->
+</body>
+</html>

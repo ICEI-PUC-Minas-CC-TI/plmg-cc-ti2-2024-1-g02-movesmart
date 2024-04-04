@@ -1,0 +1,61 @@
+/* Reset CSS */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Caixa de Pesquisa */
+.search-box {
+    display: flex;
+    justify-content: space-between;
+    justify-items: flex-end;
+    align-items: center;
+    padding: 16px;
+    margin-top: 50px;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Barra de Pesquisa */
+.search-label {
+    width: 80%;
+}
+
+/* Barra de Pesquisa */
+.search-input {
+    width: 100%;
+    border: none;
+    font-size: 24px;
+    outline: none;
+}
+
+/* Botão de Pesquisa */
+.search-logo {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    background-color: #4285f4;
+    transition: background-color 0.3s;
+    border-radius: 4px;
+}
+.search-logo:hover {
+    background-color: #2a62f4;
+}
+
+/* Botão de Pesquisa */
+.search-button {
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.search-button:hover {
+    background-color: #2a62f4;
+}
+
