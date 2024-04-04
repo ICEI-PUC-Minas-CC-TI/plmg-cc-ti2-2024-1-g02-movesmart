@@ -1,0 +1,70 @@
+/* Estilos gerais do corpo do documento */
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Define a fonte padrão */
+    margin: 0; /* Remove margens */
+    padding: 0; /* Remove preenchimentos */
+}
+
+/* Container das imagens centrais */
+.img-container {
+    max-width: 700px; /* Define a largura máxima do container */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    padding: 20px; /* Adiciona espaçamento interno */
+    text-align: center; /* Alinha o conteúdo ao centro */
+    margin-top: -50px; /* Desloca para cima */
+    user-select: none; /* Impede a seleção de elementos */
+}
+
+/* Estilos do logo */
+.logo {
+    margin-bottom: 20px; /* Adiciona espaço abaixo do logo */
+}
+
+/* Estilos do conteúdo */
+.content {
+    margin-top: -65px; /* Desloca para cima */
+}
+
+/* Imagem de fundo */
+.wave {
+    position: fixed; /* Define a posição fixa */
+    bottom: 0; /* Alinha ao fundo */
+    left: 0; /* Alinha à esquerda */
+    height: 100%; /* Define a altura */
+    z-index: -1; /* Define a ordem de empilhamento */
+    user-select: none; /* Impede a seleção de elementos */
+}
+
+/* Estilos dos botões de login e cadastro */
+.login-button,
+.signup-button {
+    background-color: #00b35f; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    padding: 10px 20px; /* Adiciona espaçamento interno */
+    border: none; /* Remove a borda */
+    border-radius: 500px; /* Adiciona borda arredondada */
+    cursor: pointer; /* Altera o cursor */
+    font-size: 16px; /* Define o tamanho da fonte */
+    margin-top: -25px; /* Desloca para cima */
+    text-decoration: none; /* Remove sublinhado de links */
+    margin-inline: 5px; /* Adiciona margem horizontal */
+}
+
+/* Estilos dos botões de login e cadastro ao passar o mouse */
+.login-button:hover,
+.signup-button:hover {
+    background-color: #00e1ff; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilos dos botões de login e cadastro ao clicar */
+.login-button:active,
+.signup-button:active {
+    background-color: #00e1ff; /* Cor de fundo ao clicar */
+}
+
+/* Estilos dos botões da NavBar */
+.buttons {
+    margin-top: 20px; /* Adiciona margem superior */
+    display: flex; /* Usa flexbox */
+    justify-content: flex-end; /* Alinha os itens à direita */
+}

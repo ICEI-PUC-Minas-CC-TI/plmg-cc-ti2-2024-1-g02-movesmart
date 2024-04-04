@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoveSmart</title>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/navbar.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Barra de Navegação -->
+        <nav>
+            <!-- Responsividade -->
+            <input type="checkbox" id="sidebar-active">
+            <label for="sidebar-active" class="open-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                </svg>
+            </label>
+            <!-- Responsividade -->
+            <label id="overlay" for="sidebar-active"></label>
+            <div class="links-container">
+                <label for="sidebar-active" class="close-sidebar-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg>
+                </label>
+                <!-- Itens de Navegação -->
+                <a class="home-link" href="#"></a> 
+                <a class="mapa-link" href="html/main.html">Mapa</a>                      <!--Link html-->
+                <a class="planos-link" href="html/planosCustos.html">Planos</a>          <!--Link html-->      
+                <a class="chatbot-link" href="html/chatbot.html">Chatbot</a>             <!--Link html-->
+                <a class="notificação-link" href="html/notificacao.html">Notificação</a> <!--Link html-->
+                <div class="buttons">
+                    <a class="login-button" href="html/login.html">Login</a>             <!--Link html-->
+                    <a class="signup-button" href="html/cadastro.html">Cadastre-se</a>   <!--Link html-->
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Fim Header -->
+    <!-- Main -->
+    <main>
+        <!-- Imagem de Fundo -->
+        <div class="wave">
+            <img class="wave-image" src="img/wave.png" alt="Onda" /> <!--Imagem Wave-->
+        </div>
+        <!-- Imagens Centrais -->
+        <div class="img-container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo MoveSmart"> <!--Imagem Logo-->
+            </div>
+            <div class="content">
+                <img src="img/onibus.png" alt="Transporte" class="transport-image"> <!--Imagem Onibus-->
+            </div>
+        </div>
+    </main>
+    <!-- Fim Main -->
+</body>
+</html>
