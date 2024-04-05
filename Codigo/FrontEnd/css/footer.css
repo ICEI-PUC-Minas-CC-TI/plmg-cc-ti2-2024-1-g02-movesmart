@@ -1,0 +1,20 @@
+footer {
+    background-color: #0f1016;; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    padding: 20px; /* Espaçamento interno */
+    text-align: center; /* Alinhamento do texto */
+    position: fixed; /* Fixa o footer na parte inferior da janela do navegador */
+    bottom: 0; /* Fixa o footer na parte inferior */
+    width: 100%; /* Largura total */
+}
+
+/* Estilo para o link no rodapé */
+footer a {
+    color: #fff; /* Cor do link */
+    text-decoration: none; /* Remove sublinhado */
+}
+
+/* Estilo para o link no rodapé quando hover */
+footer a:hover {
+    text-decoration: underline; /* Adiciona sublinhado quando hover */
+}
