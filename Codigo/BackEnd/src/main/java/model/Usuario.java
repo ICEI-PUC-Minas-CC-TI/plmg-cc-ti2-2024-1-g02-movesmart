@@ -3,7 +3,7 @@ package model;
 public class Usuario 
 {
 	// atributos
-	private int    codigo;
+	private int    id;
 	private String login ;
 	private String senha ;
 	private String email ;
@@ -11,19 +11,19 @@ public class Usuario
 	// Construtor
 	public Usuario( ) 
 	{
-		this.codigo = -1 ;
+		this.id     = -1 ;
 		this.login  = "" ;
 		this.senha  = "" ;
-		this.email   = '*';
+		this.email  = '*';
 	} // end Usuario ( )
 	
 	// Construtor Alternativo
-	public Usuario( int codigo, String login, String senha, String email ) 
+	public Usuario( int id, String login, String senha, String email ) 
 	{
-		setCodigo( codigo );
-		setLogin ( login  );
-		setSenha ( senha  );
-		setSexo  ( email   );
+		setCodigo( id    );
+		setLogin ( login );
+		setSenha ( senha );
+		setSexo  ( email );
 	} // end Usuario ( )
 	
 	// Construtor Alternativo
@@ -34,17 +34,17 @@ public class Usuario
 		setSexo  ( email   );
 	} // end Usuario ( )
 
-	// Retorna o codigo do usuario 
-	public int getCodigo( ) 
+	// Retorna o id do usuario 
+	public int getId( ) 
 	{
-		return codigo;
-	} // end getCodigo ( )
+		return id;
+	} // end getId ( )
 
-	// Atribui um codigo ao usuario
-	public void setCodigo( int codigo ) 
+	// Atribui um id ao usuario
+	public void setId( int id ) 
 	{
-		this.codigo = codigo;
-	} // end setCodigo ( )
+		this.id = id;
+	} // end setId ( )
 
 	// Retorna o login do usuario 
 	public String getLogin( ) 
@@ -86,12 +86,12 @@ public class Usuario
 	@Override
 	public String toString( ) 
 	{
-		return "Usuario [" + codigo + "," + login + "," + senha + "," + email + "]";
+		return "Usuario [id=" + id + ", login=" + login + ", senha=" + senha + ", email=" + email + "]";
 	} // end toString ( )
 	
 	@Override
 	public boolean equals( Object obj ) 
 	{
-		return (this.getCodigo() == ((Usuario) obj).getCodigo());
+		return (this.getId() == ((Usuario) obj).getId());
 	} // end equals ( )	
 } // end class
