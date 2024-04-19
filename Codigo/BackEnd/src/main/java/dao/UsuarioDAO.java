@@ -26,8 +26,8 @@ public class UsuarioDAO extends DAO
 		try 
 		{  
 			Statement st = conexao.createStatement();
-			String sql = "INSERT INTO usuario (login, senha, sexo) "
-				       + "VALUES ('" + usuario.getLogin() + "', '" + usuario.getSenha() + "', '" + usuario.getSexo() + "');";
+			String sql = "INSERT INTO usuario (login, senha, email) "
+				       + "VALUES ('" + usuario.getLogin() + "', '" + usuario.getSenha() + "', '" + usuario.getEmail() + "');";
 			System.out.println(sql);
 			st.executeUpdate(sql);
 			st.close();
@@ -50,7 +50,7 @@ public class UsuarioDAO extends DAO
 			System.out.println(sql);
 			ResultSet rs = st.executeQuery(sql);	
 	        if(rs.next()){            
-	        	 usuario = new Usuario(rs.getInt("codigo"), rs.getString("login"), rs.getString("senha"), rs.getString("sexo").charAt(0));
+	        	 usuario = new Usuario(rs.getInt("codigo"), rs.getString("login"), rs.getString("senha"), rs.getString("email").charAt(0));
 	        }
 	        st.close();
 		} catch (Exception e) 
@@ -75,10 +75,10 @@ public class UsuarioDAO extends DAO
 		return get("login");		
 	} // end getOrderByLogin ( )
 	
-	public List<Usuario> getOrderBySexo( ) 
+	public List<Usuario> getOrderByEmail( ) 
 	{
-		return get("sexo");		
-	} // end getOrderBySexo ( )
+		return get("email");		
+	} // end getOrderByEmail ( )
 	
 	private List<Usuario> get( String orderBy ) 
 	{	
@@ -92,7 +92,7 @@ public class UsuarioDAO extends DAO
 			ResultSet rs = st.executeQuery(sql);	           
 	        while( rs.next( ) ) 
 			{	            	
-	        	Usuario u = new Usuario(rs.getInt("codigo"), rs.getString("login"), rs.getString("senha"), rs.getString("sexo").charAt(0));
+	        	Usuario u = new Usuario(rs.getInt("codigo"), rs.getString("login"), rs.getString("senha"), rs.getString("email").charAt(0));
 	            usuarios.add(u);
 	        } // end whiile
 	        st.close();
@@ -110,13 +110,13 @@ public class UsuarioDAO extends DAO
 		try 
 		{
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM usuario WHERE usuario.sexo LIKE 'M'";
+			String sql = "SELECT * FROM usuario WHERE usuario.email LIKE 'M'";
 			System.out.println(sql);
 			ResultSet rs = st.executeQuery(sql);	           
 	        while( rs.next( ) ) 
 			{	            	
 	        	Usuario u = new Usuario( rs.getInt("codigo"), rs.getString("login"), 
-							rs.getString("senha"), rs.getString("sexo").charAt(0) );
+							rs.getString("senha"), rs.getString("email").charAt(0) );
 	            usuarios.add(u);
 	        } // end while
 	        st.close();
@@ -134,7 +134,7 @@ public class UsuarioDAO extends DAO
 		{  
 			Statement st = conexao.createStatement();
 			String sql = "UPDATE usuario SET login = '" + usuario.getLogin() + "', senha = '"  
-				       + usuario.getSenha() + "', sexo = '" + usuario.getSexo() + "'"
+				       + usuario.getSenha() + "', email = '" + usuario.getEmail() + "'"
 					   + " WHERE codigo = " + usuario.getCodigo();
 			System.out.println(sql);
 			st.executeUpdate(sql);

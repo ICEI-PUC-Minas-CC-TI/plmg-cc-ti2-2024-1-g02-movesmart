@@ -71,16 +71,16 @@ public class Usuario
 	} // end setSenha ( )
 
 	// Retorna o email do usuario 
-	public String getSexo()
+	public String getEmail()
 	{
 		return email;
-	} // end getSexo ( )
+	} // end getEmail ( )
 
 	// Atribui um email ao usuario
-	public void setSexo( String email ) 
+	public void setEmail( String email ) 
 	{
 		this.email = email;
-	} // end setSexo ( )
+	} // end setEmail ( )
 
 	// 
 	@Override
