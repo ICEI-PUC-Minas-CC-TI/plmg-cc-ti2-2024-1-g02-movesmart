@@ -13,15 +13,19 @@ public class UsuarioService {
     private DAO dao = new DAO();
     Gson gson = new Gson();
 
+    // Insere um usuário
     public Object insert(Request request, Response response) {
 
+        //verifica se o corpo da requisição é nulo
         if(request.body() == null){
-            response.status(500); // 500 Internal Server Error
+            response.status(400); // 400 Bad Request
             return "Corpo da requisição nulo!";
         }
 
+        //transforma o json em um objeto do tipo Usuario
         Usuario usuario = gson.fromJson(request.body(), Usuario.class);
 
+        //verifica se a senha é valida
         try {
             String senhaMD5 = dao.toMD5Password(usuario.getSenha());
             usuario.setSenha(senhaMD5);
@@ -30,6 +34,7 @@ public class UsuarioService {
             return "Erro ao converter a senha para MD5: " + e.getMessage();
         }
 
+        //verifica se o usuário foi inserido com sucesso
         if (usuarioDAO.insert(usuario)) {
             response.status(201); // 201 Created
             return "Usuario inserido com sucesso!";
@@ -38,6 +43,53 @@ public class UsuarioService {
             return "Erro ao inserir contato!";
         }
     }
+
+    // Atualiza um usuário
+    public Object update(Request request, Response response) {
+
+        //verifica se o corpo da requisição é nulo
+        if (request.body() == null) {
+            response.status(400); // 400 Bad Request
+            return "Corpo da requisição nulo!";
+        }
+
+        //transforma o json em um objeto do tipo Usuario
+        Usuario usuario = gson.fromJson(request.body(), Usuario.class);
+
+        //pega o id do usuario
+        int id = Integer.parseInt(request.params(":id"));
+
+        //seta o id do usuario
+        usuario.setId(id);
+
+        //verifica se o id é valido
+        if (usuario.getId() <= 0) {
+            response.status(400); // 400 Bad Request
+            return "ID de usuário inválido!";
+        }
+
+        //verifica se a senha é valida
+        try {
+            if (usuario.getSenha() != null && !usuario.getSenha().isEmpty()) {
+                String senhaMD5 = dao.toMD5Password(usuario.getSenha());
+                usuario.setSenha(senhaMD5);
+            }
+
+            //verifica se o usuario foi atualizado com sucesso
+            if (usuarioDAO.update(usuario)) {
+                response.status(200); // 200 OK
+                return "Usuário atualizado com sucesso!";
+            } else {
+                response.status(404); // 404 Not Found
+                return "Usuário não encontrado!";
+            }
+        } catch (Exception e) {
+            response.status(500); // 500 Internal Server Error
+            return "Erro ao atualizar usuário: " + e.getMessage();
+        }
+    }
+
+
 
 //    public Object getById(Request request, Response response) {
 //        int id = Integer.parseInt(request.params(":id"));
