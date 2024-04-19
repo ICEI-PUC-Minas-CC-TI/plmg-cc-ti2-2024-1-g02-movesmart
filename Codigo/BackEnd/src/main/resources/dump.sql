@@ -1,63 +1,57 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 13.6 (Ubuntu 13.6-0ubuntu0.21.10.1)
--- Dumped by pg_dump version 13.6 (Ubuntu 13.6-0ubuntu0.21.10.1)
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- Name: id-produto; Type: SEQUENCE; Schema: public; Owner: ti2cc
---
-
-CREATE SEQUENCE public."id-produto"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    MAXVALUE 1000000
-    CACHE 1;
-
-
-ALTER TABLE public."id-produto" OWNER TO ti2cc;
-
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
-
---
--- Name: produto; Type: TABLE; Schema: public; Owner: ti2cc
---
-
-CREATE TABLE public.produto (
-    id integer DEFAULT nextval('public."id-produto"'::regclass) NOT NULL,
-    descricao text,
-    preco double precision,
-    quantidade integer,
-    datafabricacao timestamp without time zone,
-    datavalidade date
+-- Criação da tabela Usuário
+CREATE TABLE Usuario (
+    id INT PRIMARY KEY,
+    login VARCHAR(50),
+    senha VARCHAR(50),
+    email VARCHAR(100)
 );
 
+-- Criação da tabela Transporte
+CREATE TABLE Transporte (
+    id INT PRIMARY KEY,
+    localizacao VARCHAR(100),
+    status VARCHAR(50)
+);
 
-ALTER TABLE public.produto OWNER TO ti2cc;
+-- Criação da tabela Rota
+CREATE TABLE Rota (
+    id INT PRIMARY KEY,
+    horario DATE,
+    transporte_id INT,
+    ponto_parada VARCHAR(100),
+    FOREIGN KEY (transporte_id) REFERENCES Transporte(id)
+);
 
---
--- Name: produto produto_pkey; Type: CONSTRAINT; Schema: public; Owner: ti2cc
---
+-- Criação da tabela Notificação
+CREATE TABLE Notificacao (
+    id INT PRIMARY KEY,
+    tipo VARCHAR(50),
+    mensagem TEXT,
+    timestamp TIMESTAMP
+);
 
-ALTER TABLE ONLY public.produto
-    ADD CONSTRAINT produto_pkey PRIMARY KEY (id);
+-- Tabela de relacionamento entre Usuario e Notificação (Muitos-para-Muitos)
+CREATE TABLE Usuario_Notificacao (
+    usuario_id INT,
+    notificacao_id INT,
+    PRIMARY KEY (usuario_id, notificacao_id),
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(id),
+    FOREIGN KEY (notificacao_id) REFERENCES Notificacao(id)
+);
 
+-- Tabela de relacionamento entre Transporte e Notificação (Muitos-para-Muitos)
+CREATE TABLE Transporte_Notificacao (
+    transporte_id INT,
+    notificacao_id INT,
+    PRIMARY KEY (transporte_id, notificacao_id),
+    FOREIGN KEY (transporte_id) REFERENCES Transporte(id),
+    FOREIGN KEY (notificacao_id) REFERENCES Notificacao(id)
+);
 
---
--- PostgreSQL database dump complete
---    
+-- Restrição: Um usuário não pode configurar uma notificação para um transporte que não existe
+ALTER TABLE Usuario_Notificacao
+ADD CONSTRAINT fk_usuario_notificacao FOREIGN KEY (notificacao_id) REFERENCES Notificacao(id);
+
+-- Restrição: Um transporte não pode passar por uma rota que não existe
+ALTER TABLE Rota
+ADD CONSTRAINT fk_rota FOREIGN KEY (transporte_id) REFERENCES Transporte(id);
