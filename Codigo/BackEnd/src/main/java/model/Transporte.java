@@ -1,23 +1,24 @@
 package model;
 
-public class Transporte 
-{
+import java.util.Date;
+
+public class Transporte {
     // atributos
-    private int    id;
+    private int id;
     private String status;
-    private String horario;
+    private Date horario;
     private String localizacao;
 
     // Construtor
     public Transporte() {
         this.id = -1;
         this.status = "";
-        this.horario = "";
+        this.horario = new Date(); // Inicializa com a data/hora atual
         this.localizacao = "";
     } // end Transporte()
 
     // Construtor Alternativo
-    public Transporte(int id, String status, String horario, String localizacao) {
+    public Transporte(int id, String status, Date horario, String localizacao) {
         setId(id);
         setStatus(status);
         setHorario(horario);
@@ -45,12 +46,12 @@ public class Transporte
     } // end setStatus()
 
     // Retorna o horario do transporte
-    public String getHorario() {
+    public Date getHorario() {
         return horario;
     } // end getHorario()
 
     // Atribui um horario ao transporte
-    public void setHorario(String horario) {
+    public void setHorario(Date horario) {
         this.horario = horario;
     } // end setHorario()
 
