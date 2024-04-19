@@ -6,7 +6,7 @@ public class Usuario
 	private int    codigo;
 	private String login ;
 	private String senha ;
-	private char   sexo  ;
+	private String email ;
 	
 	// Construtor
 	public Usuario( ) 
@@ -14,24 +14,24 @@ public class Usuario
 		this.codigo = -1 ;
 		this.login  = "" ;
 		this.senha  = "" ;
-		this.sexo   = '*';
+		this.email   = '*';
 	} // end Usuario ( )
 	
 	// Construtor Alternativo
-	public Usuario( int codigo, String login, String senha, char sexo ) 
+	public Usuario( int codigo, String login, String senha, String email ) 
 	{
 		setCodigo( codigo );
 		setLogin ( login  );
 		setSenha ( senha  );
-		setSexo  ( sexo   );
+		setSexo  ( email   );
 	} // end Usuario ( )
 	
 	// Construtor Alternativo
-	public Usuario( String login, String senha, char sexo ) 
+	public Usuario( String login, String senha, String email ) 
 	{
 		setLogin ( login  );
 		setSenha ( senha  );
-		setSexo  ( sexo   );
+		setSexo  ( email   );
 	} // end Usuario ( )
 
 	// Retorna o codigo do usuario 
@@ -70,23 +70,23 @@ public class Usuario
 		this.senha = senha;
 	} // end setSenha ( )
 
-	// Retorna o sexo do usuario 
-	public char getSexo()
+	// Retorna o email do usuario 
+	public String getSexo()
 	{
-		return sexo;
+		return email;
 	} // end getSexo ( )
 
-	// Atribui um sexo ao usuario
-	public void setSexo( char sexo ) 
+	// Atribui um email ao usuario
+	public void setSexo( String email ) 
 	{
-		this.sexo = sexo;
+		this.email = email;
 	} // end setSexo ( )
 
 	// 
 	@Override
 	public String toString( ) 
 	{
-		return "Usuario [codigo=" + codigo + ", login=" + login + ", senha=" + senha + ", sexo=" + sexo + "]";
+		return "Usuario [" + codigo + "," + login + "," + senha + "," + email + "]";
 	} // end toString ( )
 	
 	@Override
