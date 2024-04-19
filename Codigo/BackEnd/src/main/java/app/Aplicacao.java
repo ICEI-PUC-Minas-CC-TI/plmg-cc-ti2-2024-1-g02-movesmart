@@ -23,7 +23,7 @@ public class Aplicacao
         get("/usuario/update/:codigo", (request, response) -> usuarioService.getToUpdate(request, response));
         
         post("/usuario/update/:codigo", (request, response) -> usuarioService.update(request, response));
-           
+
         get("/usuario/delete/:codigo", (request, response) -> usuarioService.delete(request, response));
             
     } // end main ( )

@@ -39,18 +39,18 @@ public class UsuarioDAO extends DAO
 		return ( status );
 	} // end insert ( )
 
-	public Usuario get( int codigo ) 
+	public Usuario get( int id ) 
 	{
 		Usuario usuario = null;
 		
 		try 
 		{
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM usuario WHERE codigo=" + codigo;
+			String sql = "SELECT * FROM usuario WHERE id=" + id;
 			System.out.println(sql);
 			ResultSet rs = st.executeQuery(sql);	
 	        if(rs.next()){            
-	        	 usuario = new Usuario(rs.getInt("codigo"), rs.getString("login"), rs.getString("senha"), rs.getString("email").charAt(0));
+	        	 usuario = new Usuario(rs.getInt("id"), rs.getString("login"), rs.getString("senha"), rs.getString("email").charAt(0));
 	        }
 	        st.close();
 		} catch (Exception e) 
@@ -67,7 +67,7 @@ public class UsuarioDAO extends DAO
 
 	public List<Usuario> getOrderByCodigo( ) 
 	{
-		return get("codigo");		
+		return get("id");		
 	} // end getOrderByCodigo ( )
 	
 	public List<Usuario> getOrderByLogin( ) 
@@ -92,7 +92,7 @@ public class UsuarioDAO extends DAO
 			ResultSet rs = st.executeQuery(sql);	           
 	        while( rs.next( ) ) 
 			{	            	
-	        	Usuario u = new Usuario(rs.getInt("codigo"), rs.getString("login"), rs.getString("senha"), rs.getString("email").charAt(0));
+	        	Usuario u = new Usuario(rs.getInt("id"), rs.getString("login"), rs.getString("senha"), rs.getString("email").charAt(0));
 	            usuarios.add(u);
 	        } // end whiile
 	        st.close();
@@ -103,7 +103,7 @@ public class UsuarioDAO extends DAO
 		return ( usuarios );
 	} // end get ( )
 
-	public List<Usuario> getSexoMasculino( ) 
+/* 	public List<Usuario> getSexoMasculino( ) 
 	{
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		
@@ -115,7 +115,7 @@ public class UsuarioDAO extends DAO
 			ResultSet rs = st.executeQuery(sql);	           
 	        while( rs.next( ) ) 
 			{	            	
-	        	Usuario u = new Usuario( rs.getInt("codigo"), rs.getString("login"), 
+	        	Usuario u = new Usuario( rs.getInt("id"), rs.getString("login"), 
 							rs.getString("senha"), rs.getString("email").charAt(0) );
 	            usuarios.add(u);
 	        } // end while
@@ -125,7 +125,7 @@ public class UsuarioDAO extends DAO
 			System.err.println(e.getMessage());
 		} // end try catch
 		return ( usuarios );
-	} // end getSexoMasculino ( )
+	} // end getSexoMasculino ( ) */
 	
 	public boolean update( Usuario usuario ) 
 	{
@@ -135,7 +135,7 @@ public class UsuarioDAO extends DAO
 			Statement st = conexao.createStatement();
 			String sql = "UPDATE usuario SET login = '" + usuario.getLogin() + "', senha = '"  
 				       + usuario.getSenha() + "', email = '" + usuario.getEmail() + "'"
-					   + " WHERE codigo = " + usuario.getCodigo();
+					   + " WHERE id = " + usuario.getCodigo();
 			System.out.println(sql);
 			st.executeUpdate(sql);
 			st.close();
@@ -147,12 +147,12 @@ public class UsuarioDAO extends DAO
 		return status;
 	} // end update ( )
 	
-	public boolean delete( int codigo ) 
+	public boolean delete( int id ) 
 	{
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			String sql = "DELETE FROM usuario WHERE codigo = " + codigo;
+			String sql = "DELETE FROM usuario WHERE id = " + id;
 			System.out.println(sql);
 			st.executeUpdate(sql);
 			st.close();
