@@ -1,13 +1,11 @@
 package app;
 
-import dao.DAO;
 import service.UsuarioService;
 
 import static spark.Spark.*;
 
 public class Aplicacao {
     private static UsuarioService usuarioService = new UsuarioService();
-    private static DAO dao = new DAO();
 
     public static void main(String[] args) {
 
