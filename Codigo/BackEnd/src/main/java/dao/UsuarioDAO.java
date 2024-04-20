@@ -3,6 +3,7 @@ package dao;
 import model.Usuario;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UsuarioDAO extends DAO {
@@ -56,6 +57,20 @@ public class UsuarioDAO extends DAO {
             System.err.println(e.getMessage());
         }
         return status;
+    }
+
+    public boolean exists(int id) {
+        boolean exists = false;
+        try (PreparedStatement st = conexao.prepareStatement("SELECT 1 FROM usuario WHERE id = ?")) {
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                exists = true;
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return exists;
     }
 
 }

@@ -25,6 +25,11 @@ public class UsuarioService {
         //transforma o json em um objeto do tipo Usuario
         Usuario usuario = gson.fromJson(request.body(), Usuario.class);
 
+        if (usuarioDAO.exists(usuario.getId())) {
+            response.status(409); // 409 Conflict
+            return "Usuário já existe!";
+        }
+
         //verifica se a senha é valida
         try {
             String senhaMD5 = dao.toMD5Password(usuario.getSenha());
@@ -33,6 +38,7 @@ public class UsuarioService {
             response.status(500); // 500 Internal Server Error
             return "Erro ao converter a senha para MD5: " + e.getMessage();
         }
+
 
         //verifica se o usuário foi inserido com sucesso
         if (usuarioDAO.insert(usuario)) {
@@ -62,11 +68,17 @@ public class UsuarioService {
         //seta o id do usuario
         usuario.setId(id);
 
+        if (!usuarioDAO.exists(usuario.getId())) {
+            response.status(404); // 404 Not Found
+            return "Usuário não encontrado!";
+        }
+
         //verifica se o id é valido
         if (usuario.getId() <= 0) {
             response.status(400); // 400 Bad Request
             return "ID de usuário inválido!";
         }
+
 
         //verifica se a senha é valida
         try {
@@ -100,13 +112,19 @@ public class UsuarioService {
                 return "ID de usuário inválido!";
             }
 
+            // Verifica se o usuário existe
+            if (!usuarioDAO.exists(id)) {
+                response.status(404); // 404 Not Found
+                return "Usuário não encontrado!";
+            }
+
             // Verifica se o usuário foi excluído com sucesso
             if (usuarioDAO.delete(id)) {
                 response.status(200); // 200 OK
                 return "Usuário excluído com sucesso!";
             } else {
-                response.status(404); // 404 Not Found
-                return "Usuário não encontrado!";
+                response.status(500); // 500 Internal Server Error
+                return "Erro ao excluir usuário!";
             }
         } catch (Exception e) {
             response.status(500); // 500 Internal Server Error
