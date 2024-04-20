@@ -61,6 +61,7 @@ public class UsuarioDAO extends DAO {
         return status;
     }
 
+    // Busca um usuário pelo id
     public Usuario getById(int idUsuario) {
         Usuario usuario = null;
         try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuario WHERE id_usuario = ?")) {
@@ -81,6 +82,7 @@ public class UsuarioDAO extends DAO {
         return usuario;
     }
 
+    // Busca todos os usuários
     public List<Usuario> getAll() {
         List<Usuario> usuarios = new ArrayList<>();
         try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuario")) {
@@ -101,6 +103,7 @@ public class UsuarioDAO extends DAO {
         return usuarios;
     }
 
+    // Verifica se um usuário existe
     public boolean exists(int id) {
         boolean exists = false;
         try (PreparedStatement st = conexao.prepareStatement("SELECT 1 FROM usuario WHERE id_usuario = ?")) {
