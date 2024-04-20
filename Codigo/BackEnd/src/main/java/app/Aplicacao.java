@@ -34,6 +34,14 @@ public class Aplicacao {
                 return "Erro ao atualizar usuário: " + e.getMessage();
             }
         });
+        delete("/usuario/:id", (request, response) -> {
+            try {
+                return usuarioService.delete(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao excluir usuário: " + e.getMessage();
+            }
+        });
     }
 
     // Retorna a porta do servidor

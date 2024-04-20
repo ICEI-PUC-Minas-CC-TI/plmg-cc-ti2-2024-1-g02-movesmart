@@ -89,7 +89,30 @@ public class UsuarioService {
         }
     }
 
+    public Object delete(Request request, Response response) {
+        try {
+            // Obter o ID do parâmetro de caminho
+            int id = Integer.parseInt(request.params(":id"));
 
+            // Verifica se o id é valido
+            if (id <= 0) {
+                response.status(400); // 400 Bad Request
+                return "ID de usuário inválido!";
+            }
+
+            // Verifica se o usuário foi excluído com sucesso
+            if (usuarioDAO.delete(id)) {
+                response.status(200); // 200 OK
+                return "Usuário excluído com sucesso!";
+            } else {
+                response.status(404); // 404 Not Found
+                return "Usuário não encontrado!";
+            }
+        } catch (Exception e) {
+            response.status(500); // 500 Internal Server Error
+            return "Erro ao excluir usuário: " + e.getMessage();
+        }
+    }
 
 //    public Object getById(Request request, Response response) {
 //        int id = Integer.parseInt(request.params(":id"));

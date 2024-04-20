@@ -45,4 +45,17 @@ public class UsuarioDAO extends DAO {
         return status;
     }
 
+    // Deleta um usuário
+    public boolean delete(int id) {
+        boolean status = false;
+        try (PreparedStatement st = conexao.prepareStatement("DELETE FROM usuario WHERE id = ?")) {
+            st.setInt(1, id);
+            st.executeUpdate();
+            status = true;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return status;
+    }
+
 }
