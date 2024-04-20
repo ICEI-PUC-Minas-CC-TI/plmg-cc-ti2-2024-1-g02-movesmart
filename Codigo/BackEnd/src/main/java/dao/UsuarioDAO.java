@@ -59,6 +59,26 @@ public class UsuarioDAO extends DAO {
         return status;
     }
 
+    public Usuario getById(int idUsuario) {
+        Usuario usuario = null;
+        try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuario WHERE id_usuario = ?")) {
+            st.setInt(1, idUsuario);
+            try (ResultSet rs = st.executeQuery()) {
+                if (rs.next()) {
+                    usuario = new Usuario();
+                    usuario.setIdUsuario(rs.getInt("id_usuario"));
+                    usuario.setNome(rs.getString("nome"));
+                    usuario.setLogin(rs.getString("login"));
+                    usuario.setSenha(rs.getString("senha"));
+                    usuario.setEmail(rs.getString("email"));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return usuario;
+    }
+
     public boolean exists(int id) {
         boolean exists = false;
         try (PreparedStatement st = conexao.prepareStatement("SELECT 1 FROM usuario WHERE id_usuario = ?")) {

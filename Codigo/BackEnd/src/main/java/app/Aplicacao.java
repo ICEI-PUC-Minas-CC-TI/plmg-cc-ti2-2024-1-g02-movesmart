@@ -40,6 +40,14 @@ public class Aplicacao {
                 return "Erro ao excluir usuário: " + e.getMessage();
             }
         });
+        get("/usuario/:id", (request, response) -> {
+            try {
+                return usuarioService.getById(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao buscar usuário: " + e.getMessage();
+            }
+        });
     }
 
     // Retorna a porta do servidor

@@ -132,6 +132,18 @@ public class UsuarioService {
         }
     }
 
+    // Obtem um usuário pelo ID
+    public Object getById(Request request, Response response) {
+        int id = Integer.parseInt(request.params(":id"));
+        Usuario usuario = usuarioDAO.getById(id);
+        if (usuario != null) {
+            return usuario;
+        } else {
+            response.status(404); // 404 Not Found
+            return "Usuário não encontrado!";
+        }
+    }
+
 //    public Object getById(Request request, Response response) {
 //        int id = Integer.parseInt(request.params(":id"));
 //        Contato contato = contatoDAO.getById(id);
