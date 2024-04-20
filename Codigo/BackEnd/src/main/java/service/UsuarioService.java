@@ -25,7 +25,7 @@ public class UsuarioService {
         //transforma o json em um objeto do tipo Usuario
         Usuario usuario = gson.fromJson(request.body(), Usuario.class);
 
-        if (usuarioDAO.exists(usuario.getId())) {
+        if (usuarioDAO.exists(usuario.getIdUsuario())) {
             response.status(409); // 409 Conflict
             return "Usuário já existe!";
         }
@@ -66,15 +66,15 @@ public class UsuarioService {
         int id = Integer.parseInt(request.params(":id"));
 
         //seta o id do usuario
-        usuario.setId(id);
+        usuario.setIdUsuario(id);
 
-        if (!usuarioDAO.exists(usuario.getId())) {
+        if (!usuarioDAO.exists(usuario.getIdUsuario())) {
             response.status(404); // 404 Not Found
             return "Usuário não encontrado!";
         }
 
         //verifica se o id é valido
-        if (usuario.getId() <= 0) {
+        if (usuario.getIdUsuario() <= 0) {
             response.status(400); // 400 Bad Request
             return "ID de usuário inválido!";
         }
@@ -104,22 +104,22 @@ public class UsuarioService {
     public Object delete(Request request, Response response) {
         try {
             // Obter o ID do parâmetro de caminho
-            int id = Integer.parseInt(request.params(":id"));
+            int idUsuario = Integer.parseInt(request.params(":id"));
 
             // Verifica se o id é valido
-            if (id <= 0) {
+            if (idUsuario <= 0) {
                 response.status(400); // 400 Bad Request
                 return "ID de usuário inválido!";
             }
 
             // Verifica se o usuário existe
-            if (!usuarioDAO.exists(id)) {
+            if (!usuarioDAO.exists(idUsuario)) {
                 response.status(404); // 404 Not Found
                 return "Usuário não encontrado!";
             }
 
             // Verifica se o usuário foi excluído com sucesso
-            if (usuarioDAO.delete(id)) {
+            if (usuarioDAO.delete(idUsuario)) {
                 response.status(200); // 200 OK
                 return "Usuário excluído com sucesso!";
             } else {

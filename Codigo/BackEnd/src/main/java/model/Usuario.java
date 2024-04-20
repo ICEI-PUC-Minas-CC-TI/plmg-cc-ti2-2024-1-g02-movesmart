@@ -2,7 +2,7 @@ package model;
 
 public class Usuario {
     // Atributos
-    private int id;
+    private int idUsuario;
     private String nome;
     private String login;
     private String senha;
@@ -28,21 +28,21 @@ public class Usuario {
     } // end Usuario ( )
 
     // Construtor Alternativo
-    public Usuario(int id, String login, String senha, String email) {
-        setId(id);
+    public Usuario(int idUsuario, String login, String senha, String email) {
+        setIdUsuario(idUsuario);
         setLogin(login);
         setSenha(senha);
         setEmail(email);
     }
 
     // Retorna o id do usuario
-    public int getId() {
-        return id;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
     // Atribui um id ao usuario
-    public void setId(int id) {
-        this.id = id;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     // Retorna o nome do usuario
@@ -87,11 +87,11 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", login=" + login + ", senha=" + senha + ", email=" + email + "]";
+        return "Usuario [id=" + idUsuario + ", login=" + login + ", senha=" + senha + ", email=" + email + "]";
     }
 
     @Override
     public boolean equals(Object obj) {
-        return (this.getId() == ((Usuario) obj).getId());
+        return (this.getIdUsuario() == ((Usuario) obj).getIdUsuario());
     }
 }

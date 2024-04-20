@@ -33,11 +33,11 @@ public class UsuarioDAO extends DAO {
     // Atualiza um usuário
     public boolean update(Usuario usuario) {
         boolean status = false;
-        try (PreparedStatement st = conexao.prepareStatement("UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id = ?")) {
+        try (PreparedStatement st = conexao.prepareStatement("UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id_usuario = ?")) {
             st.setString(1, usuario.getNome());
             st.setString(2, usuario.getEmail());
             st.setString(3, usuario.getSenha());
-            st.setInt(4, usuario.getId());
+            st.setInt(4, usuario.getIdUsuario());
             st.executeUpdate();
             status = true;
         } catch (SQLException e) {
@@ -49,7 +49,7 @@ public class UsuarioDAO extends DAO {
     // Deleta um usuário
     public boolean delete(int id) {
         boolean status = false;
-        try (PreparedStatement st = conexao.prepareStatement("DELETE FROM usuario WHERE id = ?")) {
+        try (PreparedStatement st = conexao.prepareStatement("DELETE FROM usuario WHERE id_usuario = ?")) {
             st.setInt(1, id);
             st.executeUpdate();
             status = true;
@@ -61,7 +61,7 @@ public class UsuarioDAO extends DAO {
 
     public boolean exists(int id) {
         boolean exists = false;
-        try (PreparedStatement st = conexao.prepareStatement("SELECT 1 FROM usuario WHERE id = ?")) {
+        try (PreparedStatement st = conexao.prepareStatement("SELECT 1 FROM usuario WHERE id_usuario = ?")) {
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
