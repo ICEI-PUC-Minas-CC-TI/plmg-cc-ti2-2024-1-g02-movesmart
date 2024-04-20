@@ -28,19 +28,21 @@
             <div class="links-container">
                 <label for="sidebar-active" class="close-sidebar-button">
                     <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
-                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                     </svg>
                 </label>
                 <!-- Itens de Navegação -->
-                <a class="home-link" href="../home.html">Home</a> 
-                <a class="mapa-link" href="main.html">Mapa</a>                      <!--Link html-->
-                <a class="planos-link" href="planosCustos.html">Planos</a>          <!--Link html-->      
+                <a class="home-link" href="../home.html">Home</a>
+                <a class="mapa-link" href="main.html">Mapa</a> <!--Link html-->
+                <a class="planos-link" href="planosCustos.html">Planos</a> <!--Link html-->
                 <!-- <a class="chatbot-link" href="chatbot.html">Chatbot</a>             Link html -->
                 <a class="notificação-link" href="notificacao.html">Notificação</a> <!--Link html-->
             </div>
         </nav>
     </header>
     <!-- Fim Header -->
+
     <!-- ChatBot -->
     <div id="chat-container">
         <div id="chat-messages"></div>
@@ -48,6 +50,12 @@
             <input type="text" id="user-input" placeholder="Digite sua mensagem...">
             <button id="send-button">Enviar</button>
         </div>
+    </div>
+    <!--ChatBot-->
+    <div>
+        <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+        <df-messenger intent="WELCOME" chat-title="MrRobot" agent-id="e2636446-e64d-4918-aaab-05179c33eba6"
+            language-code="pt-br"></df-messenger>
     </div>
     <!-- Fim ChatBot -->
     <!-- Script -->
@@ -83,6 +91,7 @@
         }
     </script>
     <!-- Fim Script -->
+    
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -91,4 +100,5 @@
     </footer>
     <!-- Fim Footer -->
 </body>
+
 </html>
