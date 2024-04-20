@@ -7,6 +7,8 @@ import spark.Request;
 import spark.Response;
 import com.google.gson.Gson;
 
+import java.util.List;
+
 public class UsuarioService {
 
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -143,6 +145,18 @@ public class UsuarioService {
             return "Usuário não encontrado!";
         }
     }
+
+    // Obtem todos os usuários
+    public Object getAll(Request request, Response response) {
+        List<Usuario> usuarios = usuarioDAO.getAll();
+        if (usuarios != null) {
+            return usuarios;
+        } else {
+            response.status(404); // 404 Not Found
+            return "Nenhum usuário encontrado!";
+        }
+    }
+
 
 //    public Object getById(Request request, Response response) {
 //        int id = Integer.parseInt(request.params(":id"));

@@ -48,6 +48,14 @@ public class Aplicacao {
                 return "Erro ao buscar usuário: " + e.getMessage();
             }
         });
+        get("/usuario", (request, response) -> {
+            try {
+                return usuarioService.getAll(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao buscar usuários: " + e.getMessage();
+            }
+        });
     }
 
     // Retorna a porta do servidor

@@ -5,6 +5,8 @@ import model.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDAO extends DAO {
 
@@ -77,6 +79,26 @@ public class UsuarioDAO extends DAO {
             System.err.println(e.getMessage());
         }
         return usuario;
+    }
+
+    public List<Usuario> getAll() {
+        List<Usuario> usuarios = new ArrayList<>();
+        try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuario")) {
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    Usuario usuario = new Usuario();
+                    usuario.setIdUsuario(rs.getInt("id_usuario"));
+                    usuario.setNome(rs.getString("nome"));
+                    usuario.setLogin(rs.getString("login"));
+                    usuario.setSenha(rs.getString("senha"));
+                    usuario.setEmail(rs.getString("email"));
+                    usuarios.add(usuario);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return usuarios;
     }
 
     public boolean exists(int id) {
