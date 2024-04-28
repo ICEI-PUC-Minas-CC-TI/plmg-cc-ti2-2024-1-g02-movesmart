@@ -1,97 +1,97 @@
 package model;
 
-public class Usuario 
-{
-	// atributos
-	private int    id;
-	private String login ;
-	private String senha ;
-	private String email ;
-	
-	// Construtor
-	public Usuario( ) 
-	{
-		this.id     = -1 ;
-		this.login  = "" ;
-		this.senha  = "" ;
-		this.email  = '*';
-	} // end Usuario ( )
-	
-	// Construtor Alternativo
-	public Usuario( int id, String login, String senha, String email ) 
-	{
-		setCodigo( id    );
-		setLogin ( login );
-		setSenha ( senha );
-		setSexo  ( email );
-	} // end Usuario ( )
-	
-	// Construtor Alternativo
-	public Usuario( String login, String senha, String email ) 
-	{
-		setLogin ( login  );
-		setSenha ( senha  );
-		setSexo  ( email   );
-	} // end Usuario ( )
+public class Usuario {
+    // Atributos
+    private int idUsuario;
+    private String nome;
+    private String login;
+    private String senha;
+    private String email;
 
-	// Retorna o id do usuario 
-	public int getId( ) 
-	{
-		return id;
-	} // end getId ( )
+    public Usuario() {
+        this.login = "";
+        this.senha = "";
+        this.email = "email@default.com"; // Inicializa com um valor padrão
+    }
 
-	// Atribui um id ao usuario
-	public void setId( int id ) 
-	{
-		this.id = id;
-	} // end setId ( )
+    // Construtor Alternativo
+    public Usuario(String login, String senha) {
+        setLogin(login);
+        setSenha(senha);
+    }
 
-	// Retorna o login do usuario 
-	public String getLogin( ) 
-	{
-		return login;
-	} // end getLogin ( )
+    // Construtor Alternativo
+    public Usuario(String login, String senha, String email) {
+        setLogin(login);
+        setSenha(senha);
+        setEmail(email);
+    } // end Usuario ( )
 
-	// Atribui um login ao usuario
-	public void setLogin( String login ) 
-	{
-		this.login = login;
-	} // end setLogin ( )
+    // Construtor Alternativo
+    public Usuario(int idUsuario, String login, String senha, String email) {
+        setIdUsuario(idUsuario);
+        setLogin(login);
+        setSenha(senha);
+        setEmail(email);
+    }
 
-	// Retorna a senha do usuario 
-	public String getSenha( ) 
-	{
-		return senha;
-	} // end getSenha ( )
+    // Retorna o id do usuario
+    public int getIdUsuario() {
+        return idUsuario;
+    }
 
-	// Atribui uma senha ao usuario
-	public void setSenha( String senha ) 
-	{
-		this.senha = senha;
-	} // end setSenha ( )
+    // Atribui um id ao usuario
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
-	// Retorna o email do usuario 
-	public String getEmail()
-	{
-		return email;
-	} // end getEmail ( )
+    // Retorna o nome do usuario
+    public String getNome() {
+        return nome;
+    }
 
-	// Atribui um email ao usuario
-	public void setEmail( String email ) 
-	{
-		this.email = email;
-	} // end setEmail ( )
+    // Atribui um nome ao usuario
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	// 
-	@Override
-	public String toString( ) 
-	{
-		return "Usuario [id=" + id + ", login=" + login + ", senha=" + senha + ", email=" + email + "]";
-	} // end toString ( )
-	
-	@Override
-	public boolean equals( Object obj ) 
-	{
-		return (this.getId() == ((Usuario) obj).getId());
-	} // end equals ( )	
-} // end class
+    // Retorna o login do usuario
+    public String getLogin() {
+        return login;
+    }
+
+    // Atribui um login ao usuario
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    // Retorna a senha do usuario
+    public String getSenha() {
+        return senha;
+    }
+
+    // Atribui uma senha ao usuario
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    // Retorna o email do usuario
+    public String getEmail() {
+        return email;
+    }
+
+    // Atribui um email ao usuario
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario [id=" + idUsuario + ", login=" + login + ", senha=" + senha + ", email=" + email + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (this.getIdUsuario() == ((Usuario) obj).getIdUsuario());
+    }
+}

@@ -1,12 +1,11 @@
 package model;
 
-public class Notificacao 
-{
+public class Notificacao {
     // atributos
-    private int    id;
+    private int id;
     private String tipo;
     private String mensagem;
-    private long   timestamp;
+    private long timestamp;
 
     // Construtor
     public Notificacao() {

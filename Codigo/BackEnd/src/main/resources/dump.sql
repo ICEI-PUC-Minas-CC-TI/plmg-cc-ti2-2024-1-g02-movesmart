@@ -1,6 +1,10 @@
--- Criação da tabela Usuário
+-- PRIMEIRO PASSO:EXECUTAR OS QUATRO PRIMEIROS COMANDOS NO BANCO DE DADOS (USUARIO, TRANSPORTE, ROTA E NOTIFICACAO)
+-- SEGUNDO PASSO: EXECUTAR OS COMANDOS DE RELACIONAMENTO ENTRE AS TABELAS
+
+--Criação da tabela Usuario
 CREATE TABLE Usuario (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
     login VARCHAR(50),
     senha VARCHAR(50),
     email VARCHAR(100)
@@ -8,14 +12,14 @@ CREATE TABLE Usuario (
 
 -- Criação da tabela Transporte
 CREATE TABLE Transporte (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     localizacao VARCHAR(100),
     status VARCHAR(50)
 );
 
 -- Criação da tabela Rota
 CREATE TABLE Rota (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     horario DATE,
     transporte_id INT,
     ponto_parada VARCHAR(100),
@@ -24,7 +28,7 @@ CREATE TABLE Rota (
 
 -- Criação da tabela Notificação
 CREATE TABLE Notificacao (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     tipo VARCHAR(50),
     mensagem TEXT,
     timestamp TIMESTAMP

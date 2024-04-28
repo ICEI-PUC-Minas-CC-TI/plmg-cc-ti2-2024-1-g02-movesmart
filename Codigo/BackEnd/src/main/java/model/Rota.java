@@ -1,23 +1,24 @@
 package model;
 
-public class Rota 
-{
+import java.util.Date;
+
+public class Rota {
     // atributos
-    private int    id;
+    private int id;
     private String pontos_parada;
-    private String horario;
+    private Date horario;
     private String transporte_associado;
 
     // Construtor
     public Rota() {
         this.id = -1;
         this.pontos_parada = "";
-        this.horario = "";
+        this.horario = new Date();
         this.transporte_associado = "";
     } // end Rota()
 
     // Construtor Alternativo
-    public Rota(int id, String pontos_parada, String horario, String transporte_associado) {
+    public Rota(int id, String pontos_parada, Date horario, String transporte_associado) {
         setId(id);
         setPontos_parada(pontos_parada);
         setHorario(horario);
@@ -45,12 +46,12 @@ public class Rota
     } // end setPontos_parada()
 
     // Retorna o horario do transporte
-    public String getHorario() {
+    public Date getHorario() {
         return horario;
     } // end getHorario()
 
     // Atribui um horario ao transporte
-    public void setHorario(String horario) {
+    public void setHorario(Date horario) {
         this.horario = horario;
     } // end setHorario()
 

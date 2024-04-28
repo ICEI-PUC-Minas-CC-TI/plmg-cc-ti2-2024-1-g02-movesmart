@@ -1,11 +1,7 @@
 function validateEmail(email) {
-    var verificando = /^[a-zA-Z\s]+$/;
 
-    if (email.indexOf('@') === -1) {
-        return false;
-    }
-
-    return verificando.test(email);
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
 }
 function validadeNames(name) {
     var verificando = /^[a-zA-Z]+$/;
