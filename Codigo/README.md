@@ -4,7 +4,25 @@ Este documento descreve a estrutura do código do projeto, organizado em duas pa
 
 ## BackEnd
 
-A pasta `BackEnd` ainda está vazia, pois será desenvolvida posteriormente.
+A pasta `BackEnd` contém os recursos relacionados ao servidor da aplicação.
+
+- ### src/main/java
+
+   - ### app
+
+      A pasta `app` contém a aplicação na web.
+
+   - ### dao
+
+      A pasta `dao` contém os CRUD no SQL.
+
+   - ### model
+
+      A pasta `model` contém os modelos de entidades do proejeto.
+
+   - ### service
+
+      A pasta `service` contém a conexão do SQL com o `FrontEnd`.
 
 ## FrontEnd
 
