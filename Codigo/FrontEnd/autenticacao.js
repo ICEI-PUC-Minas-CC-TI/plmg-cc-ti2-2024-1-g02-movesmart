@@ -13,7 +13,7 @@ btnLogin.addEventListener('click', () => {
     .then(response => {
         console.log(response);
         alert('Você foi autenticado com sucesso!');
-        window.location.href = '/Codigo/FrontEnd/home.html';
+        window.location.href = '/Codigo/FrontEnd/minhaPagina.html';
     })
     .catch(error => {
         console.log(error);
