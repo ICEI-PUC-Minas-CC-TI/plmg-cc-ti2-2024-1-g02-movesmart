@@ -103,6 +103,28 @@ public class UsuarioDAO extends DAO {
         return usuarios;
     }
 
+    // Busca um usuário pelo login
+    public Usuario getByUsername(String username) {
+        Usuario usuario = null;
+        try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuario WHERE login = ?")) {
+            st.setString(1, username);
+            try (ResultSet rs = st.executeQuery()) {
+                if (rs.next()) {
+                    usuario = new Usuario();
+                    usuario.setIdUsuario(rs.getInt("id_usuario"));
+                    usuario.setNome(rs.getString("nome"));
+                    usuario.setLogin(rs.getString("login"));
+                    usuario.setSenha(rs.getString("senha"));
+                    usuario.setEmail(rs.getString("email"));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return usuario;
+    }
+
+
     // Verifica se um usuário existe
     public boolean exists(int id) {
         boolean exists = false;

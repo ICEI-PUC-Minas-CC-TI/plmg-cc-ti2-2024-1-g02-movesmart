@@ -96,5 +96,14 @@ public class Aplicacao {
                 return "Erro ao buscar usuários: " + e.getMessage();
             }
         });
+
+        post("/login", (request, response) -> {
+            try {
+                return usuarioService.authenticate(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao autenticar usuário: " + e.getMessage();
+            }
+        });
     }
 }

@@ -157,5 +157,43 @@ public class UsuarioService {
             return "Nenhum usuário encontrado!";
         }
     }
+
+    public Object authenticate(Request request, Response response) {
+        // Verifica se o corpo da requisição é nulo
+        if (request.body() == null) {
+            response.status(400); // 400 Bad Request
+            return "Corpo da requisição nulo!";
+        }
+
+        // Transforma o json em um objeto do tipo Usuario
+        Usuario usuario = gson.fromJson(request.body(), Usuario.class);
+
+        // Pega o nome de usuário e a senha
+        String login = usuario.getLogin();
+        String senha = usuario.getSenha();
+
+        // Autentica o usuário
+        Usuario usuarioAutenticado = usuarioDAO.getByUsername(login);
+        if (usuarioAutenticado == null) {
+            response.status(401); // 401 Unauthorized
+            return "Falha na autenticação!";
+        }
+
+        String senhaMD5;
+        try {
+            senhaMD5 = dao.toMD5Password(senha);
+        } catch (Exception e) {
+            response.status(500); // 500 Internal Server Error
+            return "Erro ao converter a senha para MD5: " + e.getMessage();
+        }
+
+        if (usuarioAutenticado.getSenha().equals(senhaMD5)) {
+            response.status(200); // 200 OK
+            return "Usuário autenticado com sucesso!";
+        } else {
+            response.status(401); // 401 Unauthorized
+            return "Falha na autenticação!";
+        }
+    }
 }
 
