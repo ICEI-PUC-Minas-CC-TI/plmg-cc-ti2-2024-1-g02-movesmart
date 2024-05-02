@@ -1,24 +1,31 @@
 package model;
 
-public class Onibus {
+public class Onibus 
+{
     private int idOnibus;
-    private int numero;
+    private String numero;
 
     public Onibus ( )
     {
-        this.numero = 0;
+        this.numero = "";
     }
 
-    public Onibus ( int numero )
+    public Onibus ( int idOnibus, String numero )
+    {
+        setIdOnibus( idOnibus );
+        setNumero  ( numero   );
+    }
+
+    public Onibus ( String numero )
     {
         setNumero( numero );
     }
 
-    public void setIdOnibus ( int idOnibus ) { this.idOnibus = idOnibus; }
-    public void setNumero   ( int numero   ) { this.numero   = numero;   }
+    public void setIdOnibus ( int    idOnibus ) { this.idOnibus = idOnibus; }
+    public void setNumero   ( String numero   ) { this.numero   = numero;   }
 
-    public int  getNumero   ( ) { return ( this.numero   ); }
-    public int  getIdOnibus ( ) { return ( this.idOnibus ); }
+    public int    getIdOnibus ( ) { return ( this.idOnibus ); }
+    public String getNumero   ( ) { return ( this.numero   ); }
 
     @Override
     public String toString ( ) {

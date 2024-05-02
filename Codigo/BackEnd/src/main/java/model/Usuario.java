@@ -17,35 +17,19 @@ public class Usuario
         this.email    = "email@default.com"; // Inicializa com um valor padrão
         this.telefone = "";
     }
-
     // Construtor Alternativo
-    public Usuario ( String login, String senha ) 
-    {
-        setLogin ( login );
-        setSenha ( senha );
-    }
-
-    // Construtor Alternativo
-    public Usuario ( String login, String senha, String email ) 
-    {
-        setLogin ( login );
-        setSenha ( senha );
-        setEmail ( email );
-    } // end Usuario ( )
-
-    // Construtor Alternativo
-    public Usuario ( int idUsuario, String login, String senha, String email ) 
+    public Usuario ( int idUsuario, String login, String senha, String email, String telefone ) 
     {
         setIdUsuario ( idUsuario );
         setLogin     ( login     );
         setSenha     ( senha     );
         setEmail     ( email     );
+        setTelefone  ( telefone  );
     }
 
     // Construtor Alternativo
-    public Usuario ( int idUsuario, String login, String senha, String email, String telefone ) 
+    public Usuario ( String login, String senha, String email, String telefone ) 
     {
-        setIdUsuario ( idUsuario );
         setLogin     ( login     );
         setSenha     ( senha     );
         setEmail     ( email     );

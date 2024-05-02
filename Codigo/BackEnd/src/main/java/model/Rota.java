@@ -13,7 +13,7 @@ public class Rota
         this.pontos = new ArrayList<>();
     }
 
-    public Rota ( int idRota, String nome ) 
+    public Rota ( int idRota ) 
     {
         setIdRota( idRota );
         this.pontos = new ArrayList<>();
