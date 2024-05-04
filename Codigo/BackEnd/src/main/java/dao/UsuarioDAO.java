@@ -19,11 +19,12 @@ public class UsuarioDAO extends DAO {
     // Insere um usuário
     public boolean insert(Usuario usuario) {
         boolean status = false;
-        try (PreparedStatement st = conexao.prepareStatement("INSERT INTO usuario (nome, email, login, senha) VALUES (?, ?, ?, ?)")) {
+        try (PreparedStatement st = conexao.prepareStatement("INSERT INTO usuarios (nome, email, telefone, login, senha) VALUES (?, ?, ?, ?, ?)")) {
             st.setString(1, usuario.getNome());
             st.setString(2, usuario.getEmail());
-            st.setString(3, usuario.getLogin());
-            st.setString(4, usuario.getSenha());
+            st.setString(3, usuario.getTelefone());
+            st.setString(4, usuario.getLogin());
+            st.setString(5, usuario.getSenha());
             st.executeUpdate();
             status = true;
         } catch (SQLException e) {
@@ -35,11 +36,13 @@ public class UsuarioDAO extends DAO {
     // Atualiza um usuário
     public boolean update(Usuario usuario) {
         boolean status = false;
-        try (PreparedStatement st = conexao.prepareStatement("UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id_usuario = ?")) {
+        try (PreparedStatement st = conexao.prepareStatement("UPDATE usuarios SET nome = ?, email = ?, login = ?, senha = ?, telefone = ? WHERE id_usuario = ?")) {
             st.setString(1, usuario.getNome());
             st.setString(2, usuario.getEmail());
-            st.setString(3, usuario.getSenha());
-            st.setInt(4, usuario.getIdUsuario());
+            st.setString(3, usuario.getLogin());
+            st.setString(4, usuario.getSenha());
+            st.setString(5, usuario.getTelefone());
+            st.setInt(6, usuario.getIdUsuario());
             st.executeUpdate();
             status = true;
         } catch (SQLException e) {
@@ -51,7 +54,7 @@ public class UsuarioDAO extends DAO {
     // Deleta um usuário
     public boolean delete(int id) {
         boolean status = false;
-        try (PreparedStatement st = conexao.prepareStatement("DELETE FROM usuario WHERE id_usuario = ?")) {
+        try (PreparedStatement st = conexao.prepareStatement("DELETE FROM usuarios WHERE id_usuario = ?")) {
             st.setInt(1, id);
             st.executeUpdate();
             status = true;
@@ -64,7 +67,7 @@ public class UsuarioDAO extends DAO {
     // Busca um usuário pelo id
     public Usuario getById(int idUsuario) {
         Usuario usuario = null;
-        try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuario WHERE id_usuario = ?")) {
+        try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuarios WHERE id_usuario = ?")) {
             st.setInt(1, idUsuario);
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
@@ -74,6 +77,7 @@ public class UsuarioDAO extends DAO {
                     usuario.setLogin(rs.getString("login"));
                     usuario.setSenha(rs.getString("senha"));
                     usuario.setEmail(rs.getString("email"));
+                    usuario.setTelefone(rs.getString("telefone"));
                 }
             }
         } catch (SQLException e) {
@@ -85,7 +89,7 @@ public class UsuarioDAO extends DAO {
     // Busca todos os usuários
     public List<Usuario> getAll() {
         List<Usuario> usuarios = new ArrayList<>();
-        try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuario")) {
+        try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuarios")) {
             try (ResultSet rs = st.executeQuery()) {
                 while (rs.next()) {
                     Usuario usuario = new Usuario();
@@ -94,6 +98,7 @@ public class UsuarioDAO extends DAO {
                     usuario.setLogin(rs.getString("login"));
                     usuario.setSenha(rs.getString("senha"));
                     usuario.setEmail(rs.getString("email"));
+                    usuario.setTelefone(rs.getString("telefone"));
                     usuarios.add(usuario);
                 }
             }
@@ -106,7 +111,7 @@ public class UsuarioDAO extends DAO {
     // Busca um usuário pelo login
     public Usuario getByUsername(String username) {
         Usuario usuario = null;
-        try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuario WHERE login = ?")) {
+        try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuarios WHERE login = ?")) {
             st.setString(1, username);
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
@@ -116,6 +121,7 @@ public class UsuarioDAO extends DAO {
                     usuario.setLogin(rs.getString("login"));
                     usuario.setSenha(rs.getString("senha"));
                     usuario.setEmail(rs.getString("email"));
+                    usuario.setTelefone(rs.getString("telefone"));
                 }
             }
         } catch (SQLException e) {
@@ -128,7 +134,7 @@ public class UsuarioDAO extends DAO {
     // Verifica se um usuário existe
     public boolean exists(int id) {
         boolean exists = false;
-        try (PreparedStatement st = conexao.prepareStatement("SELECT 1 FROM usuario WHERE id_usuario = ?")) {
+        try (PreparedStatement st = conexao.prepareStatement("SELECT 1 FROM usuarios WHERE id_usuario = ?")) {
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
