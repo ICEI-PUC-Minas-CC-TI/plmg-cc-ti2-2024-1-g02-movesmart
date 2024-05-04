@@ -18,7 +18,7 @@ public class Usuario
         this.telefone = "";
     }
     // Construtor Alternativo
-    public Usuario ( int idUsuario, String login, String senha, String email, String telefone ) 
+    public Usuario ( int idUsuario, String nome, String login, String senha, String email, String telefone ) 
     {
         setIdUsuario ( idUsuario );
         setLogin     ( login     );
@@ -28,7 +28,7 @@ public class Usuario
     }
 
     // Construtor Alternativo
-    public Usuario ( String login, String senha, String email, String telefone ) 
+    public Usuario ( String nome, String login, String senha, String email, String telefone ) 
     {
         setLogin     ( login     );
         setSenha     ( senha     );

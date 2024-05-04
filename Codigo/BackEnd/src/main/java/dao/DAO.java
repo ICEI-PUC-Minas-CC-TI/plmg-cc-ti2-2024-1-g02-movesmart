@@ -16,7 +16,7 @@ public class DAO
 	{
 		String  driverName = "org.postgresql.Driver";                    
 		String  serverName = "localhost";
-		String  mydatabase = "sistemaTransporte"; // mudar conforme o DB a ser utilizado
+		String  mydatabase = "movesmart";
 		int     porta      = 5432;
 		String  url        = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
 		String  username   = "ti2cc";

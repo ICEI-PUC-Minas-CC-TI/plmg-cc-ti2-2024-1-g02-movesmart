@@ -21,12 +21,13 @@ public class UsuarioDAO extends DAO
     public boolean insert ( Usuario usuario ) 
     {
         boolean status = false;
-        try( PreparedStatement st = conexao.prepareStatement("INSERT INTO usuario (nome, email, login, senha) VALUES (?, ?, ?, ?)") ) 
+        try( PreparedStatement st = conexao.prepareStatement("INSERT INTO usuario (nome, email, telefone, login, senha) VALUES (?, ?, ?, ?, ?)" ) ) 
         {
-            st.setString( 1, usuario.getNome ( ) );
-            st.setString( 2, usuario.getEmail( ) );
-            st.setString( 3, usuario.getLogin( ) );
-            st.setString( 4, usuario.getSenha( ) );
+            st.setString( 1, usuario.getNome    ( ) );
+            st.setString( 2, usuario.getEmail   ( ) );
+            st.setString( 3, usuario.getTelefone( ) );
+            st.setString( 4, usuario.getLogin   ( ) );
+            st.setString( 5, usuario.getSenha   ( ) );
             st.executeUpdate( );
             status = true;
         } 
@@ -40,12 +41,14 @@ public class UsuarioDAO extends DAO
     public boolean update ( Usuario usuario ) 
     {
         boolean status = false;
-        try( PreparedStatement st = conexao.prepareStatement( "UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id_usuario = ?" ) ) 
+        try( PreparedStatement st = conexao.prepareStatement( "UPDATE usuario SET nome = ?, email = ?, telefone = ?, login = ? senha = ? WHERE id_usuario = ?" ) ) 
         {
             st.setString( 1, usuario.getNome     ( ) );
             st.setString( 2, usuario.getEmail    ( ) );
-            st.setString( 3, usuario.getSenha    ( ) );
-            st.setInt   ( 4, usuario.getIdUsuario( ) );
+            st.setString( 3, usuario.getTelefone ( ) );
+            st.setString( 4, usuario.getLogin    ( ) ); // Corrigido (era getSenha(
+            st.setString( 5, usuario.getSenha    ( ) );
+            st.setInt   ( 6, usuario.getIdUsuario( ) );
             st.executeUpdate( );
             status = true;
         } 
@@ -85,9 +88,10 @@ public class UsuarioDAO extends DAO
                     usuario = new Usuario( );
                     usuario.setIdUsuario( rs.getInt   ( "id_usuario" ) );
                     usuario.setNome     ( rs.getString( "nome"       ) );
+                    usuario.setEmail    ( rs.getString( "email"      ) );
+                    usuario.setTelefone ( rs.getString( "telefone"   ) );
                     usuario.setLogin    ( rs.getString( "login"      ) );
                     usuario.setSenha    ( rs.getString( "senha"      ) );
-                    usuario.setEmail    ( rs.getString( "email"      ) );
                 }
             }
         } 
@@ -110,9 +114,10 @@ public class UsuarioDAO extends DAO
                     Usuario usuario = new Usuario( );
                     usuario.setIdUsuario( rs.getInt   ( "id_usuario" ) );
                     usuario.setNome     ( rs.getString( "nome"       ) );
+                    usuario.setEmail    ( rs.getString( "email"      ) );
+                    usuario.setTelefone ( rs.getString( "telefone"   ) );
                     usuario.setLogin    ( rs.getString( "login"      ) );
                     usuario.setSenha    ( rs.getString( "senha"      ) );
-                    usuario.setEmail    ( rs.getString( "email"      ) );
                     usuarios.add( usuario );
                 }
             }
