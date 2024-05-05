@@ -8,17 +8,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioDAO extends DAO {
-
+public class UsuarioDAO extends DAO 
+{
     // Construtor
-    public UsuarioDAO() {
-        super();
-        conectar();
-    }
+    public UsuarioDAO ( ) 
+    {
+        super( );
+        conectar( );
+    } // end UsuarioDAO ( )
 
     // Insere um usuário
-    public boolean insert(Usuario usuario) {
+    public boolean insert ( Usuario usuario ) 
+    {
         boolean status = false;
+<<<<<<< HEAD
         try (PreparedStatement st = conexao.prepareStatement("INSERT INTO usuarios (nome, email, telefone, login, senha) VALUES (?, ?, ?, ?, ?)")) {
             st.setString(1, usuario.getNome());
             st.setString(2, usuario.getEmail());
@@ -26,16 +29,29 @@ public class UsuarioDAO extends DAO {
             st.setString(4, usuario.getLogin());
             st.setString(5, usuario.getSenha());
             st.executeUpdate();
+=======
+        try( PreparedStatement st = conexao.prepareStatement("INSERT INTO usuario (nome, email, telefone, login, senha) VALUES (?, ?, ?, ?, ?)" ) ) 
+        {
+            st.setString( 1, usuario.getNome    ( ) );
+            st.setString( 2, usuario.getEmail   ( ) );
+            st.setString( 3, usuario.getTelefone( ) );
+            st.setString( 4, usuario.getLogin   ( ) );
+            st.setString( 5, usuario.getSenha   ( ) );
+            st.executeUpdate( );
+>>>>>>> origin/UpdateBackEnd
             status = true;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } 
+        catch( SQLException e ) {
+            throw new RuntimeException( e );
         }
-        return status;
-    }
+        return ( status );
+    } // end insert ( )
 
     // Atualiza um usuário
-    public boolean update(Usuario usuario) {
+    public boolean update ( Usuario usuario ) 
+    {
         boolean status = false;
+<<<<<<< HEAD
         try (PreparedStatement st = conexao.prepareStatement("UPDATE usuarios SET nome = ?, email = ?, login = ?, senha = ?, telefone = ? WHERE id_usuario = ?")) {
             st.setString(1, usuario.getNome());
             st.setString(2, usuario.getEmail());
@@ -44,29 +60,52 @@ public class UsuarioDAO extends DAO {
             st.setString(5, usuario.getTelefone());
             st.setInt(6, usuario.getIdUsuario());
             st.executeUpdate();
+=======
+        try( PreparedStatement st = conexao.prepareStatement( "UPDATE usuario SET nome = ?, email = ?, telefone = ?, login = ? senha = ? WHERE id_usuario = ?" ) ) 
+        {
+            st.setString( 1, usuario.getNome     ( ) );
+            st.setString( 2, usuario.getEmail    ( ) );
+            st.setString( 3, usuario.getTelefone ( ) );
+            st.setString( 4, usuario.getLogin    ( ) ); // Corrigido (era getSenha(
+            st.setString( 5, usuario.getSenha    ( ) );
+            st.setInt   ( 6, usuario.getIdUsuario( ) );
+            st.executeUpdate( );
+>>>>>>> origin/UpdateBackEnd
             status = true;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } 
+        catch( SQLException e ) {
+            throw new RuntimeException( e );
         }
-        return status;
-    }
+        return ( status );
+    } // end update ( )
 
     // Deleta um usuário
-    public boolean delete(int id) {
+    public boolean delete ( int id ) 
+    {
         boolean status = false;
+<<<<<<< HEAD
         try (PreparedStatement st = conexao.prepareStatement("DELETE FROM usuarios WHERE id_usuario = ?")) {
             st.setInt(1, id);
             st.executeUpdate();
+=======
+        try( PreparedStatement st = conexao.prepareStatement( "DELETE FROM usuario WHERE id_usuario = ?" ) ) 
+        {
+            st.setInt( 1, id );
+            st.executeUpdate( );
+>>>>>>> origin/UpdateBackEnd
             status = true;
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
+        } 
+        catch( SQLException e ) {
+            System.err.println( e.getMessage( ) );
         }
-        return status;
-    }
+        return ( status );
+    } // end delete ( )
 
     // Busca um usuário pelo id
-    public Usuario getById(int idUsuario) {
+    public Usuario getById ( int idUsuario ) 
+    {
         Usuario usuario = null;
+<<<<<<< HEAD
         try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuarios WHERE id_usuario = ?")) {
             st.setInt(1, idUsuario);
             try (ResultSet rs = st.executeQuery()) {
@@ -78,15 +117,33 @@ public class UsuarioDAO extends DAO {
                     usuario.setSenha(rs.getString("senha"));
                     usuario.setEmail(rs.getString("email"));
                     usuario.setTelefone(rs.getString("telefone"));
+=======
+        try( PreparedStatement st = conexao.prepareStatement( "SELECT * FROM usuario WHERE id_usuario = ?" ) ) 
+        {
+            st.setInt( 1, idUsuario );
+            try( ResultSet rs = st.executeQuery( ) ) 
+            {
+                if( rs.next( ) ) 
+                {
+                    usuario = new Usuario( );
+                    usuario.setIdUsuario( rs.getInt   ( "id_usuario" ) );
+                    usuario.setNome     ( rs.getString( "nome"       ) );
+                    usuario.setEmail    ( rs.getString( "email"      ) );
+                    usuario.setTelefone ( rs.getString( "telefone"   ) );
+                    usuario.setLogin    ( rs.getString( "login"      ) );
+                    usuario.setSenha    ( rs.getString( "senha"      ) );
+>>>>>>> origin/UpdateBackEnd
                 }
             }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
+        } 
+        catch( SQLException e ) {
+            System.err.println( e.getMessage( ) );
         }
-        return usuario;
-    }
+        return ( usuario );
+    } // end getById ( )
 
     // Busca todos os usuários
+<<<<<<< HEAD
     public List<Usuario> getAll() {
         List<Usuario> usuarios = new ArrayList<>();
         try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuarios")) {
@@ -100,13 +157,33 @@ public class UsuarioDAO extends DAO {
                     usuario.setEmail(rs.getString("email"));
                     usuario.setTelefone(rs.getString("telefone"));
                     usuarios.add(usuario);
+=======
+    public List<Usuario> getAll ( ) 
+    {
+        List<Usuario> usuarios = new ArrayList<>( );
+        try( PreparedStatement st = conexao.prepareStatement( "SELECT * FROM usuario" ) ) 
+        {
+            try( ResultSet rs = st.executeQuery( ) ) 
+            {
+                while( rs.next( ) ) 
+                {
+                    Usuario usuario = new Usuario( );
+                    usuario.setIdUsuario( rs.getInt   ( "id_usuario" ) );
+                    usuario.setNome     ( rs.getString( "nome"       ) );
+                    usuario.setEmail    ( rs.getString( "email"      ) );
+                    usuario.setTelefone ( rs.getString( "telefone"   ) );
+                    usuario.setLogin    ( rs.getString( "login"      ) );
+                    usuario.setSenha    ( rs.getString( "senha"      ) );
+                    usuarios.add( usuario );
+>>>>>>> origin/UpdateBackEnd
                 }
             }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
+        } 
+        catch( SQLException e ) {
+            System.err.println( e.getMessage( ) );
         }
-        return usuarios;
-    }
+        return ( usuarios );
+    } // end getAll ( )
 
     // Busca um usuário pelo login
     public Usuario getByUsername(String username) {
@@ -132,18 +209,28 @@ public class UsuarioDAO extends DAO {
 
 
     // Verifica se um usuário existe
-    public boolean exists(int id) {
+    public boolean exists ( int id ) 
+    {
         boolean exists = false;
+<<<<<<< HEAD
         try (PreparedStatement st = conexao.prepareStatement("SELECT 1 FROM usuarios WHERE id_usuario = ?")) {
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
+=======
+        try( PreparedStatement st = conexao.prepareStatement( "SELECT 1 FROM usuario WHERE id_usuario = ?" ) ) 
+        {
+            st.setInt( 1, id );
+            ResultSet rs = st.executeQuery( );
+            if( rs.next( ) ) {
+>>>>>>> origin/UpdateBackEnd
                 exists = true;
             }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
+        } 
+        catch( SQLException e ) {
+            System.err.println( e.getMessage( ) );
         }
-        return exists;
-    }
+        return ( exists );
+    } // end exists ( )
 
-}
+} // end class UsuarioDAO
