@@ -4,9 +4,10 @@ public class Usuario {
     // Atributos
     private int idUsuario;
     private String nome;
+    private String email;
     private String login;
     private String senha;
-    private String email;
+    private String telefone;
 
     public Usuario() {
         this.login = "";
@@ -85,9 +86,19 @@ public class Usuario {
         this.email = email;
     }
 
+    // Retorna o telefone do usuario
+    public String getTelefone() {
+        return telefone;
+    }
+
+    // Atribui um telefone ao usuario
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     @Override
     public String toString() {
-        return "Usuario [id=" + idUsuario + ", login=" + login + ", senha=" + senha + ", email=" + email + "]";
+        return "Usuario [id=" + idUsuario + ", login=" + login + ", senha=" + senha + ", email=" + email + " + telefone=" + telefone + "]";
     }
 
     @Override

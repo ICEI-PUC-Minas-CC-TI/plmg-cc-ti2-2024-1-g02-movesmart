@@ -7,28 +7,28 @@
     <!-- Link Script -->
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <!-- Link CSS -->
-    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <link rel="stylesheet" type="text/css" href="../FrontEnd/css/login.css">
     <title>Login</title>
 </head>
 <body>
 	<!-- Main -->
 	<main>
-		<img class="wave" src="../img/wave.png" alt="Imagem Wave"> <!--Imagem Wave-->
+		<img class="wave" src="../FrontEnd/img/wave.png" alt="Imagem Wave"> <!--Imagem Wave-->
 		<div class="container">
 			<div class="img">
-				<img src="../img/busao.png" alt="Imagem Ônibus"> <!-- Imagem Ônibus -->
+				<img src="../FrontEnd/img/onibus.png" alt="Imagem Ônibus"> <!-- Imagem Ônibus -->
 			</div>
 			<!-- Login -->
 			<div class="login-content">
 				<form action="#"> <!--Link html-->
-					<img src="../img/logo.png" alt="Logo" href="../home.html"> <!-- Imagem Logo -->
+					<img src="../FrontEnd/img/logo.png" alt="Logo" href="../home.html"> <!-- Imagem Logo -->
 					<div class="input-div one">
 						<div class="i">
 							<i class="fas fa-user"></i>
 						</div>
 						<div class="div">
-							<h5>Nome de Usuário</h5>
-							<input type="text" class="input">
+							<h5>Login</h5>
+							<input type="text" class="input" id="inputLogin" required>
 						</div>
 					</div>
 					<div class="input-div pass">
@@ -37,16 +37,17 @@
 						</div>
 						<div class="div">
 							<h5>Senha</h5>
-							<input type="password" class="input">
+							<input type="password" class="input" id="inputSenha" required>
 						</div>
 					</div>
-					<p class="para-2">Ainda não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p> <!--Link html-->
+					<p class="para-2">Ainda não tem uma conta? <a href="../FrontEnd/cadastro.html">Cadastre-se</a></p> <!--Link html-->
 					<p class="para-2"> <a href="recuperarSenha.html">Esqueceu sua senha?</a> </p> <!--Link html-->
-					<input type="submit" class="btn" value="Entrar">
+					<input type="submit" class="btn-login" value="Entrar">
 				</form>
 			</div>
 		</div>
-		<script type="text/javascript" src="../js/login.js"></script> <!--Link Script-->
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script type="text/javascript" src="../FrontEnd/autenticacao.js"></script> <!--Link Script-->
 	</main>
 	<!-- Fim Main -->
 </body>
