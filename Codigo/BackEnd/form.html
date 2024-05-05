@@ -10,18 +10,18 @@
     <title>Controle de Usuário</title>
     
     <script type="text/javascript">
-    	function confirmarDeleteUsuario(codigo, login, sexo) {
-        	if (confirm('Confirmar a exclusão do usuário [' + login + '] (Codigo ' + codigo + ') com sexo ' + sexo)) {
-            	location.href = '/usuario/delete/' + codigo;
-        	}
-    	}
+        function confirmarDeleteUsuario(codigo, login, sexo) {
+            if (confirm('Confirmar a exclusão do usuário [' + login + '] (Codigo ' + codigo + ') com sexo ' + sexo)) {
+                location.href = '/od/delete/' + codigo;
+            }
+        }
 
-    	function onLoad() {
-        	var msgElement = document.getElementById("msg");
-        	if(msgElement && msgElement.value !== "") {
-            	alert(msgElement.value);
-       	 	}
-    	}
+        function onLoad() {
+            var msgElement = document.getElementById("msg");
+            if(msgElement && msgElement.value !== "") {
+                alert(msgElement.value);
+            }
+        }
 	</script>
 
 	
@@ -80,9 +80,9 @@
 <body onload="onLoad()">
     <h1>Controle de Usuarios</h1>
     <input type="hidden" id="msg" name="msg" value="">
-    <UM-USUARIO></UM-USUARIO>
+    <UM-OD></UM-OD>
     <br>
-    <LISTAR-USUARIO></LISTAR-USUARIO>
+    <LISTAR-OD></LISTAR-OD>
 </body>
 
 </html>
