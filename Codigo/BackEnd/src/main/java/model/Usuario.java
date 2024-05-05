@@ -8,10 +8,6 @@ public class Usuario
     private String email;
     private String login;
     private String senha;
-<<<<<<< HEAD
-=======
-    private String email;
->>>>>>> origin/UpdateBackEnd
     private String telefone;
 
     public Usuario( ) 
@@ -54,23 +50,10 @@ public class Usuario
     public String getEmail     ( ) { return ( email     ); }
     public String getTelefone  ( ) { return ( telefone  ); }
 
-    // Retorna o telefone do usuario
-    public String getTelefone() {
-        return telefone;
-    }
-
-    // Atribui um telefone ao usuario
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
 
     @Override
     public String toString() {
-<<<<<<< HEAD
         return "Usuario [id=" + idUsuario + ", login=" + login + ", senha=" + senha + ", email=" + email + " + telefone=" + telefone + "]";
-=======
-        return ( "Usuario [id=" + idUsuario + ", login=" + login + ", senha=" + senha + ", email=" + email + ", telefone=" + telefone + "]" );
->>>>>>> origin/UpdateBackEnd
     }
 
     @Override
