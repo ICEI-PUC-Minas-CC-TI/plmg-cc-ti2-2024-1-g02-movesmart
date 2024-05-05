@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-package service;
-
-public class OdService{
-    
-}
-=======
 /* 
  * 
  * 	EM TESTE
  */
 
-/* package service;
+package service;
 
 import java.io.File;
 import java.util.Scanner;
@@ -209,5 +202,4 @@ public class OdService
         return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
     }
 }
- */
->>>>>>> origin/UpdateBackEnd
+

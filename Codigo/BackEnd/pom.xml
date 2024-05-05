@@ -39,15 +39,21 @@
             <version>2.10.1</version>
         </dependency>
 
-        <!-- java.mail -->
+        <!-- java.mail.* -->
         <dependency>
-            <groupId>org.simplejavamail</groupId>
-            <artifactId>simple-java-mail</artifactId>
-            <version>8.7.0</version>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version> <!-- Use a versão mais recente disponível -->
+        </dependency>
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>javax.activation</artifactId>
+            <version>1.2.0</version> <!-- Use a versão mais recente disponível -->
         </dependency>
 
 
     </dependencies>
+
     <build>
         <plugins>
             <plugin>

@@ -4,7 +4,7 @@
  * 
  */
 
-/* package app;
+package app;
 
 import static spark.Spark.*;
 import service.OdService;
@@ -31,4 +31,3 @@ public class AplicacaoOd {
         get("/od/delete/:id", (request, response) -> odService.delete(request, response));  
     }
 }
- */

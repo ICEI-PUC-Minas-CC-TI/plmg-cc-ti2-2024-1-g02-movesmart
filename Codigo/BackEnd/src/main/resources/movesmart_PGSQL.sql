@@ -17,7 +17,6 @@ CREATE TABLE IF NOT EXISTS OD (
     Usuario_id_usuario INT NOT NULL,
     CONSTRAINT fk_Usuario_id_OD FOREIGN KEY (Usuario_id_usuario) REFERENCES Usuario (id_usuario) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
-0101
 -- Table Onibus
 CREATE TABLE IF NOT EXISTS Onibus (
     id_onibus SERIAL PRIMARY KEY,
