@@ -1,9 +1,4 @@
-/* 
- * 
- * 	EM TESTE
- */
-
-/* package service;
+package service;
 
 import java.io.File;
 import java.util.Scanner;
@@ -23,11 +18,11 @@ public class OdService
 
     public OdService ( ) {
         makeForm( );
-    }
+    } // end constructor ( )
 
     public void makeForm ( ) {
         makeForm ( FORM_INSERT, new Od( ) );
-    }
+    } // end makeForm ( )
 
     public void makeForm ( int tipo, Od od ) 
 	{
@@ -52,7 +47,7 @@ public class OdService
 			String actionForm = createActionForm(tipo, od);
 			form = form.replaceFirst("<UM-OD>", actionForm);
 		}
-    }
+    } // end makeForm ( )
 
     private String createTable ( ) 
 	{
@@ -63,7 +58,7 @@ public class OdService
 				table += "\t</table>";
 				table += "\t<br>";
         return (table);
-    }
+    } // end createTable ( )
 
     private String createActionForm ( int actionType, Od Od) {
         String action = "/Od/";
@@ -124,7 +119,7 @@ public class OdService
 
         makeForm();
         return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
-    }
+    } // end insert ( )
 	
     public Object get(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
@@ -140,7 +135,7 @@ public class OdService
             form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
         }
         return form;
-    }
+    } // end get ( )
 
     public Object getToUpdate(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
@@ -156,14 +151,14 @@ public class OdService
             form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
         }
         return form;
-    }
+    } // end getToUpdate ( )
 
     public Object getAll(Request request, Response response) {
         makeForm();
         response.header("Content-Type", "text/html");
         response.header("Content-Encoding", "UTF-8");
         return form;
-    }
+    } // end getAll ( )
 
     public Object update(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
@@ -183,7 +178,7 @@ public class OdService
         }
         makeForm();
         return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
-    }
+    } // end update ( )
 
     public Object delete(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
@@ -200,6 +195,5 @@ public class OdService
         }
         makeForm();
         return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"" + resp + "\">");
-    }
-}
- */
+    } // end delete ( )
+} // end class OdService

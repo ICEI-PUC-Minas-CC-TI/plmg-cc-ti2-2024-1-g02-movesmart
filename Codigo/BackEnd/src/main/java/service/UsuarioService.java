@@ -9,153 +9,184 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
-public class UsuarioService {
-
-    private UsuarioDAO usuarioDAO = new UsuarioDAO();
-    private DAO dao = new DAO();
-    Gson gson = new Gson();
+public class UsuarioService 
+{
+    private UsuarioDAO usuarioDAO = new UsuarioDAO( );
+    private DAO dao = new DAO( );
+    Gson gson = new Gson( );
 
     // Insere um usuário
-    public Object insert(Request request, Response response) {
-
+    public Object insert ( Request request, Response response ) 
+    {
         //verifica se o corpo da requisição é nulo
-        if(request.body() == null){
+        if( request.body( ) == null )
+        {
             response.status(400); // 400 Bad Request
             return "Corpo da requisição nulo!";
-        }
+        } // end if
 
         //transforma o json em um objeto do tipo Usuario
-        Usuario usuario = gson.fromJson(request.body(), Usuario.class);
-
-        if (usuarioDAO.exists(usuario.getIdUsuario())) {
+        Usuario usuario = gson.fromJson( request.body( ), Usuario.class );
+        if( usuarioDAO.exists( usuario.getIdUsuario( ) ) ) 
+        {
             response.status(409); // 409 Conflict
             return "Usuário já existe!";
-        }
+        } // end if
 
         //verifica se a senha é valida
-        try {
-            String senhaMD5 = dao.toMD5Password(usuario.getSenha());
-            usuario.setSenha(senhaMD5);
-        } catch (Exception e) {
-            response.status(500); // 500 Internal Server Error
-            return "Erro ao converter a senha para MD5: " + e.getMessage();
-        }
-
+        try 
+        {
+            String senhaMD5 = dao.toMD5Password( usuario.getSenha( ) );
+            usuario.setSenha( senhaMD5 );
+        } 
+        catch( Exception e ) 
+        {
+            response.status( 500 ); // 500 Internal Server Error
+            return ( "Erro ao converter a senha para MD5: " + e.getMessage( ) );
+        } // end try
 
         //verifica se o usuário foi inserido com sucesso
-        if (usuarioDAO.insert(usuario)) {
-            response.status(201); // 201 Created
-            return "Usuario inserido com sucesso!";
-        } else {
-            response.status(500); // 500 Internal Server Error
-            return "Erro ao inserir contato!";
-        }
-    }
+        if( usuarioDAO.insert( usuario ) ) 
+        {
+            response.status( 201 ); // 201 Created
+            return ( "Usuario inserido com sucesso!" );
+        } 
+        else 
+        {
+            response.status( 500 ); // 500 Internal Server Error
+            return ( "Erro ao inserir contato!" );
+        } // end if
+    } // end insert( )
 
     // Atualiza um usuário
-    public Object update(Request request, Response response) {
-
+    public Object update ( Request request, Response response ) 
+    {
         //verifica se o corpo da requisição é nulo
-        if (request.body() == null) {
-            response.status(400); // 400 Bad Request
-            return "Corpo da requisição nulo!";
-        }
+        if( request.body( ) == null ) 
+        {
+            response.status( 400 ); // 400 Bad Request
+            return ( "Corpo da requisição nulo!" );
+        } // end if
 
         //transforma o json em um objeto do tipo Usuario
-        Usuario usuario = gson.fromJson(request.body(), Usuario.class);
+        Usuario usuario = gson.fromJson( request.body( ), Usuario.class );
 
         //pega o id do usuario
-        int id = Integer.parseInt(request.params(":id"));
+        int id = Integer.parseInt( request.params( ":id" ) );
 
         //seta o id do usuario
-        usuario.setIdUsuario(id);
+        usuario.setIdUsuario( id );
 
-        if (!usuarioDAO.exists(usuario.getIdUsuario())) {
-            response.status(404); // 404 Not Found
-            return "Usuário não encontrado!";
-        }
+        if( !usuarioDAO.exists( usuario.getIdUsuario( ) ) ) 
+        {
+            response.status( 404 ); // 404 Not Found
+            return ( "Usuário não encontrado!" );
+        } // end if
 
         //verifica se o id é valido
-        if (usuario.getIdUsuario() <= 0) {
-            response.status(400); // 400 Bad Request
-            return "ID de usuário inválido!";
-        }
-
+        if( usuario.getIdUsuario( ) <= 0 ) 
+        {
+            response.status( 400 ); // 400 Bad Request
+            return ( "ID de usuário inválido!" );
+        } // end if
 
         //verifica se a senha é valida
-        try {
-            if (usuario.getSenha() != null && !usuario.getSenha().isEmpty()) {
-                String senhaMD5 = dao.toMD5Password(usuario.getSenha());
-                usuario.setSenha(senhaMD5);
-            }
+        try 
+        {
+            if( usuario.getSenha( ) != null && !usuario.getSenha( ).isEmpty( ) ) 
+            {
+                String senhaMD5 = dao.toMD5Password( usuario.getSenha( ) );
+                usuario.setSenha( senhaMD5 );
+            } // end if
 
             //verifica se o usuario foi atualizado com sucesso
-            if (usuarioDAO.update(usuario)) {
-                response.status(200); // 200 OK
-                return "Usuário atualizado com sucesso!";
-            } else {
-                response.status(404); // 404 Not Found
-                return "Usuário não encontrado!";
+            if( usuarioDAO.update( usuario )) 
+            {
+                response.status( 200 ); // 200 OK
+                return ( "Usuário atualizado com sucesso!" );
+            } 
+            else 
+            {
+                response.status( 404 ); // 404 Not Found
+                return ( "Usuário não encontrado!" );
             }
-        } catch (Exception e) {
-            response.status(500); // 500 Internal Server Error
-            return "Erro ao atualizar usuário: " + e.getMessage();
-        }
-    }
+        } 
+        catch( Exception e ) 
+        {
+            response.status( 500 ); // 500 Internal Server Error
+            return ( "Erro ao atualizar usuário: " + e.getMessage( ) );
+        } // end try
+    } // end update( )
 
     // Deleta um usuário
-    public Object delete(Request request, Response response) {
-        try {
+    public Object delete ( Request request, Response response ) 
+    {
+        try 
+        {
             // Obter o ID do parâmetro de caminho
-            int idUsuario = Integer.parseInt(request.params(":id"));
+            int idUsuario = Integer.parseInt( request.params( ":id" ) );
 
             // Verifica se o id é valido
-            if (idUsuario <= 0) {
+            if( idUsuario <= 0 ) 
+            {
                 response.status(400); // 400 Bad Request
                 return "ID de usuário inválido!";
-            }
+            } // end if
 
             // Verifica se o usuário existe
-            if (!usuarioDAO.exists(idUsuario)) {
-                response.status(404); // 404 Not Found
+            if( !usuarioDAO.exists( idUsuario ) ) 
+            {
+                response.status( 404 ); // 404 Not Found
                 return "Usuário não encontrado!";
-            }
+            } // end if
 
             // Verifica se o usuário foi excluído com sucesso
-            if (usuarioDAO.delete(idUsuario)) {
-                response.status(200); // 200 OK
-                return "Usuário excluído com sucesso!";
-            } else {
-                response.status(500); // 500 Internal Server Error
-                return "Erro ao excluir usuário!";
+            if( usuarioDAO.delete( idUsuario ) ) 
+            {
+                response.status( 200 ); // 200 OK
+                return ( "Usuário excluído com sucesso!" );
+            } 
+            else 
+            {
+                response.status( 500 ); // 500 Internal Server Error
+                return ( "Erro ao excluir usuário!" );
             }
-        } catch (Exception e) {
-            response.status(500); // 500 Internal Server Error
-            return "Erro ao excluir usuário: " + e.getMessage();
-        }
-    }
+        } 
+        catch( Exception e ) 
+        {
+            response.status( 500 ); // 500 Internal Server Error
+            return ( "Erro ao excluir usuário: " + e.getMessage( ) );
+        } // end try
+    } // end delete ( )
 
     // Obtem um usuário pelo ID
-    public Object getById(Request request, Response response) {
-        int id = Integer.parseInt(request.params(":id"));
-        Usuario usuario = usuarioDAO.getById(id);
-        if (usuario != null) {
-            return new Gson().toJson(usuario);
-        } else {
-            response.status(404); // 404 Not Found
-            return "Usuário não encontrado!";
-        }
-    }
+    public Object getById ( Request request, Response response ) 
+    {
+        int id = Integer.parseInt( request.params( ":id" ) );
+        Usuario usuario = usuarioDAO.getById( id );
+        if( usuario != null ) {
+            return new Gson( ).toJson( usuario );
+        } 
+        else 
+        {
+            response.status( 404 ); // 404 Not Found
+            return ( "Usuário não encontrado!" );
+        } // end if
+    } // end getById( )
 
     // Obtem todos os usuários
-    public Object getAll(Request request, Response response) {
-        List<Usuario> usuarios = usuarioDAO.getAll();
-        if (usuarios != null) {
-           return new Gson().toJson(usuarios);
-        } else {
-            response.status(404); // 404 Not Found
-            return "Nenhum usuário encontrado!";
-        }
-    }
-}
+    public Object getAll ( Request request, Response response ) 
+    {
+        List<Usuario> usuarios = usuarioDAO.getAll( );
+        if( usuarios != null ) {
+            return new Gson().toJson( usuarios );
+        } 
+        else 
+        {
+            response.status( 404 ); // 404 Not Found
+            return ( "Nenhum usuário encontrado!" );
+        } // end if
+    } // end getAll( )
+
+} // end class UsuarioService
 
