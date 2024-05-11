@@ -1,5 +1,6 @@
 package model;
 
+// https://mailtrap.io/blog/sending-email-using-java/?utm_source=youtube&utm_medium=videos&utm_campaign=java_send_email_api
 
 import app.Aplicacao;
 import java.util.Properties;
