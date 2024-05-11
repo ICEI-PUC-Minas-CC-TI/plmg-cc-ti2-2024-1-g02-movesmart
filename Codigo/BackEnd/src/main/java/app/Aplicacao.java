@@ -23,7 +23,7 @@ public class Aplicacao {
     }
 
     // Retorna a porta do servidor
-    private static int getPort() {
+    public static int getPort() {
         return 6796;
     }
 

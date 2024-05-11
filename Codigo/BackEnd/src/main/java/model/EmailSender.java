@@ -1,5 +1,7 @@
 package model;
 
+
+import app.Aplicacao;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -12,58 +14,58 @@ import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
 
-    // Change these variables to your email and password
-    static final String SENDER_EMAIL = "your_email@example.com";
-    static final String SENDER_PASSWORD = "your_password";
+    public static void sendEmail(String to, String subject, String text) {
 
-    public static void main(String[] args) {
-        // Create a user object
-        Usuario u = new Usuario();
+        // provide sender email ID
+        String user_from = "movesmartti2@gmail.com";
 
-        // Recipient's email
-        String recipientEmail = u.getEmail();
+        // provide mailtrap's username
+        final String username = "Vinishow";
+        final String password = "TI2CC@2024";
 
-        // Email properties
+        // provide mailtraps host address
+        String host = "smtp.mailtrap.io";
+
+        // configure mailtrap's SMTP server details
         Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.example.com"); // Change this to your SMTP server
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "587"); // Change this if needed
         props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", Aplicacao.getPort());
 
-        // Authenticate the sender email and password
-        Authenticator auth = new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(SENDER_EMAIL, SENDER_PASSWORD);
-            }
-        };
-
-        // Create a session
-        Session session = Session.getInstance(props, auth);
-
+        // create the session object
+        Session session = Session.getInstance(props, 
+            new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
+        });
         try {
-            // Create a MimeMessage object
+            // create a MimeMessage object
             MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(user_from));
+            message.setRecipients(( Message.RecipientType.TO), InternetAddress.parse(to));
 
-            // Set From: header field
-            message.setFrom(new InternetAddress(SENDER_EMAIL));
+            // The message and the subject is in the signature of the method
+            message.setSubject(subject);
+            message.setText(text);
 
-            // Set To: header field
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
-
-            // Set Subject: header field
-            message.setSubject("Seu onibus esta chegando!");
-
-            // Set the email content
-            String emailContent = "Seu onibus esta chegando!";
-            message.setText(emailContent);
-
-            // Send the email
             Transport.send(message);
 
-            System.out.println("Aviso de chegada enviado com sucesso!");
-
+            System.out.println("Email sent successfully");
         } catch (MessagingException e) {
-            System.err.println("Error occurred while sending email: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
+        
+
+    }
+
+    public static void main(String[] args) {
+        String subject = "Test Email"; // The subject
+        String text = "Hello, this is a test email"; // The message
+        String to = "giuseppe.cordeiro@gmail.com"; // The recipient change after to usuario.getemail()
+        sendEmail(to, subject, text);
     }
 }
