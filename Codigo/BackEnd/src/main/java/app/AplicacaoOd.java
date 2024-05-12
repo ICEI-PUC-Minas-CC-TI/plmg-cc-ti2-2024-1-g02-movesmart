@@ -4,14 +4,14 @@
  * 
  */
 
-/* package app;
+package app;
 
 import static spark.Spark.*;
-import service.OdService;
+import service.OdService2;
 
 public class AplicacaoOd {
     
-    private static OdService odService = new OdService();
+    private static OdService2 odService = new OdService2();
     
     public static void main(String[] args) {
         port(6789);
@@ -31,4 +31,3 @@ public class AplicacaoOd {
         get("/od/delete/:id", (request, response) -> odService.delete(request, response));  
     }
 }
- */

@@ -1,0 +1,41 @@
+/* Todo o Body */
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /* background-image: url(/Codigo/FrontEnd/img/wave.png); */
+    background-repeat: no-repeat;
+    background-color: rgb(255, 255, 255);
+}
+
+/* Menu de Navegacao */
+.nav-bar {
+    background-color: black;
+    padding: 16px;
+}
+
+/* Botao do Menu de Navegacao */
+.btn-nav {
+    background-color: #2cd498;
+    color: black;
+    min-width: 100px;
+    text-decoration: none;
+    border: none;
+}
+
+/* Botao do Menu de Navegacao ao passar o mouse */
+.btn-nav:hover {
+    background-color: #42d6a2;
+    color: white;
+}
+
+/* Todas as imagens */
+img {
+    user-select: none;
+}
+
+/* Footer */
+.ft {
+    background-color: black;
+}

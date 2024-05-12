@@ -2,10 +2,11 @@ package service;
 
 import java.io.File;
 import java.util.Scanner;
-import model.Od;
-import dao.OdDAO;
 import spark.Request;
 import spark.Response;
+
+import model.Od;
+import dao.OdDAO;
 
 public class OdService 
 {
@@ -26,7 +27,7 @@ public class OdService
 
     public void makeForm ( int tipo, Od od ) 
 	{
-        String nomeArquivo = "C:\\Users\\vinic\\Desktop\\plmg-cc-ti2-2024-1-g02-movesmart\\Codigo\\BackEnd\\src\\main\\java\\service\\form.html";
+        String nomeArquivo = "Codigo/BackEnd/src/main/java/service/form.html";
         form = "";
         try 
 		{
@@ -101,13 +102,14 @@ public class OdService
 	} // end createActionForm ( )
 
     public Object insert(Request request, Response response) {
+        String linha = request.queryParams("linha");
         String origem = request.queryParams("origem");
         String destino = request.queryParams("destino");
         String horario = request.queryParams("horario");
 
         String resp = "";
 
-        Od od = new Od( origem, destino, horario );
+        Od od = new Od( linha, origem, destino, horario );
 
         if( odDAO.insert(od) ) {
             resp = "Od (" + origem + ") inserido!";

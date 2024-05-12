@@ -5,8 +5,10 @@ import model.Horario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class HorarioDAO extends DAO 
 {
@@ -19,7 +21,7 @@ public class HorarioDAO extends DAO
     public boolean insert ( Horario horario ) 
     {
         boolean status = false;
-        try( PreparedStatement st = conexao.prepareStatement( "INSERT INTO Horario (horario) VALUES (?)" ) ) 
+        try( PreparedStatement st = conexao.prepareStatement( "INSERT INTO horario (horario) VALUES (?)" ) ) 
         {
             st.setObject( 1, horario.getHorario( ) );
             st.executeUpdate( );
@@ -50,7 +52,7 @@ public class HorarioDAO extends DAO
     public boolean delete ( int idHorario ) 
     {
         boolean status = false;
-        try( PreparedStatement st = conexao.prepareStatement( "DELETE FROM Horario WHERE id_horario = ?" ) ) 
+        try( PreparedStatement st = conexao.prepareStatement( "DELETE FROM horario WHERE id_horario = ?" ) ) 
         {
             st.setInt( 1, idHorario );
             st.executeUpdate( );
@@ -65,7 +67,7 @@ public class HorarioDAO extends DAO
     public Horario getById ( int idHorario ) 
     {
         Horario horario = null;
-        try( PreparedStatement st = conexao.prepareStatement( "SELECT * FROM Horario WHERE id_horario = ?" ) ) 
+        try( PreparedStatement st = conexao.prepareStatement( "SELECT * FROM horario WHERE id_horario = ?" ) ) 
         {
             st.setInt( 1, idHorario );
             try( ResultSet rs = st.executeQuery( ) ) 
@@ -87,15 +89,17 @@ public class HorarioDAO extends DAO
     public List<Horario> getAll ( ) 
     {
         List<Horario> horarios = new ArrayList<>( );
-        try( PreparedStatement st = conexao.prepareStatement( "SELECT * FROM Horario" ) ) 
+        try( PreparedStatement st = conexao.prepareStatement( "SELECT * FROM horario" ) ) 
         {
             try( ResultSet rs = st.executeQuery( ) ) 
             {
                 while( rs.next( ) ) 
                 {
                     Horario horario = new Horario( );
-                    horario.setIdHorario( rs.getInt   ( "id_horario" ) );
-                    horario.setHorario  ( rs.getObject( "horario", java.sql.Time.class ) );
+                    horario.setIdHorario( rs.getInt ( "id_horario" ) );
+                    Time time = rs.getTime("horario");
+                    Date date = new Date(time.getTime());
+                    horario.setHorario(date);
                     horarios.add( horario );
                 }
             }

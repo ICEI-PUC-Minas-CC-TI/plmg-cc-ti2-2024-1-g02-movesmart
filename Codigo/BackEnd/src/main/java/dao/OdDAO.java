@@ -19,8 +19,9 @@ public class OdDAO extends DAO
     public boolean insert ( Od od ) 
     {
         boolean status = false;
-        try( PreparedStatement st = conexao.prepareStatement( "INSERT INTO od (horario, origem, destino) VALUES (?, ?, ?)" ) ) 
+        try( PreparedStatement st = conexao.prepareStatement( "INSERT INTO od (linha, horario, origem, destino) VALUES (?, ?, ?)" ) ) 
         {
+            st.setString( 0, od.getLinha  ( ) );
             st.setString( 1, od.getHorario( ) );
             st.setString( 2, od.getOrigem ( ) );
             st.setString( 3, od.getDestino( ) );
@@ -36,8 +37,9 @@ public class OdDAO extends DAO
     public boolean update ( Od od ) 
     {
         boolean status = false;
-        try( PreparedStatement st = conexao.prepareStatement( "UPDATE od SET horario = ?, origem = ?, destino = ? WHERE id_od = ?" ) ) 
+        try( PreparedStatement st = conexao.prepareStatement( "UPDATE od SET linha = ?, horario = ?, origem = ?, destino = ? WHERE id_od = ?" ) ) 
         {
+            st.setString( 0, od.getLinha  ( ) );
             st.setString( 1, od.getHorario( ) );
             st.setString( 2, od.getOrigem ( ) );
             st.setString( 3, od.getDestino( ) );
@@ -78,6 +80,7 @@ public class OdDAO extends DAO
                 {
                     od = new Od( );
                     od.setIdOd   ( rs.getInt   ( "id_od"   ) );
+                    od.setLinha  ( rs.getString( "linha"   ) );
                     od.setHorario( rs.getString( "horario" ) );
                     od.setOrigem ( rs.getString( "origem"  ) );
                     od.setDestino( rs.getString( "destino" ) );
@@ -101,6 +104,7 @@ public class OdDAO extends DAO
                 {
                     Od od = new Od( );
                     od.setIdOd   ( rs.getInt   ( "id_od"   ) );
+                    od.setLinha  ( rs.getString( "linha"   ) );
                     od.setHorario( rs.getString( "horario" ) );
                     od.setOrigem ( rs.getString( "origem"  ) );
                     od.setDestino( rs.getString( "destino" ) );
