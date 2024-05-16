@@ -1,4 +1,3 @@
-//cadastro de usuário
 const btn = document.querySelector('btn-nav');
 
 btn.addEventListener('click', () => {
@@ -14,7 +13,7 @@ btn.addEventListener('click', () => {
         horario: horario
     };
 
-    axios.post('http://localhost:6796/od', od)
+    axios.post('http://localhost:6796/od/insert', OD)
     .then(response => {
         console.log(response);
         alert('Notificação de Origem-Destino criada com sucesso!');
