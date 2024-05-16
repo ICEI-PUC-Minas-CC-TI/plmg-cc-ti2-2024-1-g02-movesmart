@@ -7,11 +7,11 @@
 package app;
 
 import static spark.Spark.*;
-import service.OdService2;
+import service.OdService;
 
 public class AplicacaoOd {
     
-    private static OdService2 odService = new OdService2();
+    private static OdService odService = new OdService();
     
     public static void main(String[] args) {
         port(6789);

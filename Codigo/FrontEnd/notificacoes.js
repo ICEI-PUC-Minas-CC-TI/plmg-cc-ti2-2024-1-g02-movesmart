@@ -17,10 +17,10 @@ btn.addEventListener('click', () => {
     axios.post('http://localhost:6796/od', od)
     .then(response => {
         console.log(response);
-        alert('Origem-Destino criada com sucesso!');
+        alert('Notificação de Origem-Destino criada com sucesso!');
     })
     .catch(error => {
         console.log(error);
-        alert('Erro! Não foi possível criar sua Origem-Destino. Tente novamente');
+        alert('Erro! Não foi possível criar sua Notificação de Origem-Destino. Tente novamente');
     });
 });

@@ -15,7 +15,7 @@ import dao.PontoDAO;
 import model.Onibus;
 import dao.OnibusDAO;
 
-public class OdService2 
+public class OdService 
 {
     private OdDAO      odDAO      = new OdDAO( );
     private PontoDAO   pontoDAO   = new PontoDAO( );
@@ -26,7 +26,7 @@ public class OdService2
     private final int FORM_DETAIL = 2;
     private final int FORM_UPDATE = 3;
 
-    public OdService2 ( ) {
+    public OdService ( ) {
         makeForm( );
     } // end OdService2 ( )
 
@@ -77,6 +77,14 @@ public class OdService2
             form = form.replaceFirst("<UM-ORIGEM>", dropdownPonto );
             form = form.replaceFirst("<UM-DESTINO>", dropdownPonto );
             form = form.replaceFirst("<UM-HORARIO>", dropdownHorario );
+        }
+        else if( tipo == FORM_DETAIL ) 
+        {
+            umOd = "<h3>Origem-Destino ( ID " + od.getIdOd() + " )</h3>";
+            umOd += "<b>Linha:</b> " + od.getLinha() + "<br>";
+            umOd += "<b>Origem:</b> " + od.getOrigem() + "<br>";
+            umOd += "<b>Destino:</b> " + od.getDestino() + "<br>";
+            umOd += "<b>Horário:</b> " + od.getHorario() + "<br>";
         }
         else {
             System.out.println( "ERRO! Tipo não identificado " + tipo );
