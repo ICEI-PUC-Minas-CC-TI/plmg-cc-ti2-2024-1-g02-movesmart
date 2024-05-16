@@ -1,9 +1,9 @@
 const map = L.map("map");
 // Initializes map
-map.setView([51.505, -0.09], 13);
+map.setView([51.505, -0.05], 13);
 // Sets initial coordinates and zoom level
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
+  maxZoom: 18,
   attribution:
     '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);

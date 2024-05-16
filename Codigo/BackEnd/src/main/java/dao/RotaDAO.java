@@ -1,6 +1,6 @@
 package dao;
 
-import model.Ponto;
+// import model.Ponto;
 import model.Rota;
 
 import java.sql.PreparedStatement;
