@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Scanner;
 import spark.Request;
 import spark.Response;
+import com.google.gson.Gson;
 
 import model.Od;
 import dao.OdDAO;
 import model.Horario;
 import dao.HorarioDAO;
 import model.Ponto;
+import model.Usuario;
 import dao.PontoDAO;
 import model.Onibus;
 import dao.OnibusDAO;
@@ -21,6 +23,7 @@ public class OdService
     private PontoDAO   pontoDAO   = new PontoDAO( );
     private HorarioDAO horarioDAO = new HorarioDAO( );
     private OnibusDAO  onibusDAO  = new OnibusDAO( );
+    Gson    gson = new Gson();
     private String    form;
     private final int FORM_INSERT = 1;
     private final int FORM_DETAIL = 2;
@@ -67,7 +70,8 @@ public class OdService
                 buttonLabel = "Atualizar";
             }
             /* Substituir a marcação <UM-ACTION> pelo HTML do OD */
-            form = form.replaceFirst( "<UM-ACTION>", action );
+            form = form.replaceFirst( "<UM-ACTION>", "\t<form class=\"form--register\" action=\"" + action + 
+                                        "\" method=\"post\" id=\"form-add\">" );
             
             String dropdownOnibus  = dropdownOnibus ( onibusDAO.getAll ( ) );
             String dropdownPonto   = dropdownPonto  ( pontoDAO.getAll  ( ) );
@@ -131,7 +135,7 @@ public class OdService
     {
         String html = "";
         for( int i = 0; i < pontos.size( ); i++ ) {
-            html += "<option value=\"" + pontos.get(i).getIdPonto() + "\">" + pontos.get(i).getLogradouro() + ", " + 
+            html += "<option value=\"" + pontos.get(i).getLogradouro() + "," + pontos.get(i).getNumero() + "\">" + pontos.get(i).getLogradouro() + ", " + 
             pontos.get(i).getNumero( ) + ("</option>");
         }
         return ( html );
@@ -142,7 +146,7 @@ public class OdService
     {
         String html = "";
         for( int i = 0; i < horarios.size( ); i++ ) {
-            html += "<option value=\"" + horarios.get(i).getIdHorario() + "\">" + horarios.get(i).getHorario() + "</option>";
+            html += "<option value=\"" + horarios.get(i).getHorario() + "\">" + horarios.get(i).getHorario() + "</option>";
         }
         return ( html );
     } // end dropdownHorario ( )
@@ -152,7 +156,7 @@ public class OdService
     {
         String html = "";
         for( int i = 0; i < onibus.size( ); i++ ) {
-            html += "<option value=\"" + onibus.get(i).getIdOnibus() + "\">" + onibus.get(i).getNumero( ) + "</option>";
+            html += "<option value=\"" + onibus.get(i).getNumero() + "\">" + onibus.get(i).getNumero( ) + "</option>";
         }
         return ( html );
     } // end dropdownOnibus ( )
@@ -160,37 +164,42 @@ public class OdService
     // inserir um novo OD
     public Object insert(Request request, Response response) 
     {
-        String linha   = request.queryParams( "linha"   );
-        String origem  = request.queryParams( "origem"  );
-        String destino = request.queryParams( "destino" );
-        String horario = request.queryParams( "horario" );
-        String resp = "";
-
-        Od od = new Od( -1, linha, origem, destino, horario);
-
-        if( odDAO.insert(od) == true ) 
+        //verifica se o corpo da requisição é nulo
+        if( request.body() == null )
         {
-            resp = "Origem-Destino (" + linha + " - " +origem + " - " + destino + " - " + horario + ") inserido!";
-            response.status(201); // 201 Created
-        } 
-        else 
-        {
-            resp = "Origem-Destino (" + linha + " - " +origem + " - " + destino + " - " + horario + ") não inserido!";
-            response.status(404); // 404 Not found
+            response.status(400); // 400 Bad Request
+            return ( "Corpo da requisição nulo!" );
         }
-        makeForm( );
-        return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");
+        
+        System.out.println("OK");
+        //transforma o json em um objeto do tipo Od
+        Od od = gson.fromJson( request.body(), Od.class );
+        System.out.println("aqui da PAU");
+
+        System.out.println("Dados recebidos: " + od.toString( ));
+
+        //verifica se o Od foi inserido com sucesso
+        if( odDAO.insert(od) ) 
+        {
+            response.status(201); // 201 Created
+            return "Origem-Destino inserido com sucesso!";
+        } 
+        else
+        {
+            response.status(500); // 500 Internal Server Error
+            return "Erro ao inserir Origem-Destino!";
+        }
     } // end insert ( )
 
 	// obter um OD
 	public Object get( Request request, Response response ) 
     {
 		int id = Integer.parseInt(request.params(":id"));		
-		Od produto = (Od) odDAO.getById( id );
-		if( produto != null )
+		Od od = (Od) odDAO.getById( id );
+		if( od != null )
         {
 			response.status( 200 ); // success
-			makeForm( FORM_DETAIL, produto );
+			makeForm( FORM_DETAIL, od );
         } 
         else 
         {
@@ -238,10 +247,10 @@ public class OdService
         String resp = "";       
         if (od != null)
         {
-            od.setLinha(request.queryParams("linha"));
-            od.setHorario(request.queryParams("horario"));
-            od.setOrigem(request.queryParams("origem"));
-            od.setDestino(request.queryParams("destino"));
+            od.setLinha  (request.queryParams("linha")   );
+            od.setOrigem (request.queryParams("origem")  );
+            od.setDestino(request.queryParams("destino") );
+            od.setHorario(request.queryParams("horario") );
             odDAO.update(od);
             response.status(200); // success
             resp = "Od (ID " + od.getIdOd() + ") atualizado!";

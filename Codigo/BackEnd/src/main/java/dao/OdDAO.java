@@ -5,6 +5,7 @@ import model.Od;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +20,12 @@ public class OdDAO extends DAO
     public boolean insert ( Od od ) 
     {
         boolean status = false;
-        try( PreparedStatement st = conexao.prepareStatement( "INSERT INTO od (linha, horario, origem, destino) VALUES (?, ?, ?)" ) ) 
+        try( PreparedStatement st = conexao.prepareStatement( "INSERT INTO od (linha, origem, destino, horario) VALUES (?, ?, ?, ?)" ) ) 
         {
-            st.setString( 0, od.getLinha  ( ) );
-            st.setString( 1, od.getHorario( ) );
+            st.setString( 1, od.getLinha  ( ) );
             st.setString( 2, od.getOrigem ( ) );
             st.setString( 3, od.getDestino( ) );
+            st.setString( 4, od.getHorario( ) );
             st.executeUpdate( );
             status = true;
         } 
@@ -37,13 +38,13 @@ public class OdDAO extends DAO
     public boolean update ( Od od ) 
     {
         boolean status = false;
-        try( PreparedStatement st = conexao.prepareStatement( "UPDATE od SET linha = ?, horario = ?, origem = ?, destino = ? WHERE id_od = ?" ) ) 
+        try( PreparedStatement st = conexao.prepareStatement( "UPDATE od SET linha = ?, origem = ?, destino = ?, horario = ? WHERE id_od = ?" ) ) 
         {
-            st.setString( 0, od.getLinha  ( ) );
-            st.setString( 1, od.getHorario( ) );
+            st.setString( 1, od.getLinha  ( ) );
             st.setString( 2, od.getOrigem ( ) );
             st.setString( 3, od.getDestino( ) );
-            st.setInt   ( 4, od.getIdOd   ( ) );
+            st.setString( 4, od.getHorario( ) );
+            st.setInt   ( 5, od.getIdOd   ( ) );
             st.executeUpdate( );
             status = true;
         } 
@@ -81,9 +82,9 @@ public class OdDAO extends DAO
                     od = new Od( );
                     od.setIdOd   ( rs.getInt   ( "id_od"   ) );
                     od.setLinha  ( rs.getString( "linha"   ) );
-                    od.setHorario( rs.getString( "horario" ) );
                     od.setOrigem ( rs.getString( "origem"  ) );
                     od.setDestino( rs.getString( "destino" ) );
+                    od.setHorario( rs.getString( "horario" ) );
                 }
             }
         } 
@@ -105,9 +106,9 @@ public class OdDAO extends DAO
                     Od od = new Od( );
                     od.setIdOd   ( rs.getInt   ( "id_od"   ) );
                     od.setLinha  ( rs.getString( "linha"   ) );
-                    od.setHorario( rs.getString( "horario" ) );
                     od.setOrigem ( rs.getString( "origem"  ) );
                     od.setDestino( rs.getString( "destino" ) );
+                    od.setHorario( rs.getString( "horario" ) );
                     ods.add( od );
                 }
             }

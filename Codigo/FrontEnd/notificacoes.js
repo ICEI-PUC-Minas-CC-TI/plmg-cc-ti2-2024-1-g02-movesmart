@@ -13,7 +13,7 @@ btn.addEventListener('click', () => {
         horario: horario
     };
 
-    axios.post('http://localhost:6796/od/insert', OD)
+    axios.post('http://localhost:8080/od/insert', OD)
     .then(response => {
         console.log(response);
         alert('Notificação de Origem-Destino criada com sucesso!');

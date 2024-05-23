@@ -1,27 +1,28 @@
 -- Table Usuario
 CREATE TABLE IF NOT EXISTS Usuario (
     id_usuario SERIAL PRIMARY KEY,
-    nome VARCHAR(45),
-    login VARCHAR(45),
-    senha VARCHAR(45),
-    email VARCHAR(45),
-    telefone VARCHAR(45)
+    nome VARCHAR(80),
+    login VARCHAR(80),
+    senha VARCHAR(80),
+    email VARCHAR(80),
+    telefone VARCHAR(80)
 );
 
 -- Table OD
 CREATE TABLE IF NOT EXISTS OD (
     id_od SERIAL PRIMARY KEY,
+    linha VARCHAR(80),
+    origem VARCHAR(80),
+    destino VARCHAR(80),
     horario TIME,
-    origem VARCHAR(45),
-    destino VARCHAR(45),
     Usuario_id_usuario INT NOT NULL,
     CONSTRAINT fk_Usuario_id_OD FOREIGN KEY (Usuario_id_usuario) REFERENCES Usuario (id_usuario) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
-0101
+
 -- Table Onibus
 CREATE TABLE IF NOT EXISTS Onibus (
     id_onibus SERIAL PRIMARY KEY,
-    numero VARCHAR(45)
+    numero VARCHAR(80)
 );
 
 -- Table Rota
@@ -34,7 +35,7 @@ CREATE TABLE IF NOT EXISTS Rota (
 -- Table Ponto
 CREATE TABLE IF NOT EXISTS Ponto (
     id_ponto SERIAL,
-    logradouro VARCHAR(45),
+    logradouro VARCHAR(80),
     numero INT,
     Rota_id_rota INT NOT NULL,
     OD_id_od INT NOT NULL,

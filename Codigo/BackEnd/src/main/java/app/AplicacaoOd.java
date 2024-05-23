@@ -15,7 +15,7 @@ public class AplicacaoOd {
 
     static final String LOCAL_HOST = "http://127.0.0.1:5500";
 
-    static final int PORT = 6796;
+    static final int PORT = 8080;
 
     public static void main(String[] args) {
 
