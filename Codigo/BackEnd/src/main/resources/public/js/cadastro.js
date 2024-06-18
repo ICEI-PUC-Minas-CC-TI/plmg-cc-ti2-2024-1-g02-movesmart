@@ -20,7 +20,7 @@ btn.addEventListener('click', () => {
     .then(response => {
         console.log(response);
         alert('Sua conta foi criada com sucesso!');
-        window.location.href = '/Codigo/FrontEnd/login.html';
+        window.location.href = 'login.html';
     })
     .catch(error => {
         console.log(error);

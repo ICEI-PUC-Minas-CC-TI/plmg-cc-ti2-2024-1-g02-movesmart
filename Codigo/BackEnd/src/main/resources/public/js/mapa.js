@@ -43,7 +43,7 @@ btnNoti.addEventListener('click', () => {
     .then(response => {
         console.log(response);
         // alert('Você foi autenticado com sucesso!');
-        window.location.href = '/Codigo/FrontEnd/notificacoes.html';
+        window.location.href = 'notificacoes.html';
     })
     .catch(error => {
         console.log(error);

@@ -121,8 +121,8 @@ public class OdService
                     "\t<td width=\"100\" align=\"center\">" + p.getOrigem( ) + "</td>\n" +
                     "\t<td width=\"100\" align=\"center\">" + p.getDestino( ) + "</td>\n" +
                     "\t<td width=\"100\" align=\"center\">" + p.getHorario( ) + "</td>\n" +
-                    "\t<td align=\"center\" valign=\"middle\"><a href=\"/od/update/" + p.getIdOd() + "\"><img src=\"/image/update.png\" width=\"20\" height=\"20\"/></a></td>\n" +
-                    "\t<td align=\"center\" valign=\"middle\"><a href=\"javascript:deletarOd('" + p.getIdOd() + "', '" + p.getOrigem() + "', '" + p.getDestino() + "', '" + p.getHorario() + "');\"><img src=\"/image/delete.png\" width=\"20\" height=\"20\"/></a></td>\n" +
+                    "\t<td align=\"center\" valign=\"middle\"><a href=\"/od/update/" + p.getIdOd() + "\"><img src=\"img/update.png\" width=\"20\" height=\"20\"/></a></td>\n" +
+                    "\t<td align=\"center\" valign=\"middle\"><a href=\"javascript:deletarOd('" + p.getIdOd() + "', '" + p.getOrigem() + "', '" + p.getDestino() + "', '" + p.getHorario() + "');\"><img src=\"img/delete.png\" width=\"20\" height=\"20\"/></a></td>\n" +
                     "</tr>\n";
 		}
 		list += "</table>";
