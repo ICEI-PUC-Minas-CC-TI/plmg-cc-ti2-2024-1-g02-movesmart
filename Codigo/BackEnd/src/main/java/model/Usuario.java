@@ -5,7 +5,6 @@ public class Usuario
     // Atributos
     private int    idUsuario;
     private String nome;
-    private String email;
     private String login;
     private String senha;
     private String email;
