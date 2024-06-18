@@ -171,12 +171,8 @@ public class OdService
             return ( "Corpo da requisição nulo!" );
         }
         
-        System.out.println("OK");
         //transforma o json em um objeto do tipo Od
         Od od = gson.fromJson( request.body(), Od.class );
-        System.out.println("aqui da PAU");
-
-        System.out.println("Dados recebidos: " + od.toString( ));
 
         //verifica se o Od foi inserido com sucesso
         if( odDAO.insert(od) ) 

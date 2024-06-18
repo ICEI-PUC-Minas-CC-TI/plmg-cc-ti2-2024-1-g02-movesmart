@@ -1,12 +1,14 @@
 package app;
 
 import service.UsuarioService;
+import service.OdService;
 
 import static spark.Spark.*;
 
 public class Aplicacao {
 
     private static UsuarioService usuarioService = new UsuarioService();
+    private static OdService odService = new OdService();
 
     static final String LOCAL_HOST = "http://127.0.0.1:5500";
 
@@ -30,7 +32,7 @@ public class Aplicacao {
     // Configuração do CORS
     private static void configureCors() {
         before((request, response) -> {
-            response.header("Access-Control-Allow-Origin", LOCAL_HOST);
+            response.header("Access-Control-Allow-Origin", "*");
             response.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
             response.header("Access-Control-Allow-Headers", "*");
         });
@@ -105,5 +107,24 @@ public class Aplicacao {
                 return "Erro ao autenticar usuário: " + e.getMessage();
             }
         });
+
+        post("/od/insert", (request, response) -> {
+            try {
+                return odService.insert(request, response);
+            } catch ( Exception e ) {
+                response.status(500);
+                return "Erro ao inserir Origem-Destino: " + e.getMessage();
+            }
+        });
+
+        get("/od/:id", (request, response) -> odService.get(request, response));
+
+        get("/od/list/:orderby", (request, response) -> odService.getAll(request, response));
+
+        get("/od/update/:id", (request, response) -> odService.getToUpdate(request, response));
+
+        post("/od/update/:id", (request, response) -> odService.update(request, response));
+
+        get("/od/delete/:id", (request, response) -> odService.delete(request, response));
     }
 }

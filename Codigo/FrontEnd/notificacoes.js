@@ -1,4 +1,4 @@
-const btn = document.querySelector('btn-nav');
+const btn = document.querySelector('.btn-nav');
 
 btn.addEventListener('click', () => {
     const onibus = document.querySelector('#onibus').value;
@@ -6,14 +6,19 @@ btn.addEventListener('click', () => {
     const destino = document.querySelector('#destino').value;
     const horario = document.querySelector('#horario').value;
 
-    const OD = {
-        onibus: onibus,
+    if (!onibus || !origem || !destino || !horario) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+    }
+
+    const Od = {
+        linha: onibus,
         origem: origem,
         destino: destino,
         horario: horario
     };
-
-    axios.post('http://localhost:8080/od/insert', OD)
+    
+    axios.post('http://localhost:6796/od/insert', Od)
     .then(response => {
         console.log(response);
         alert('Notificação de Origem-Destino criada com sucesso!');
