@@ -36,3 +36,17 @@ function error(err) {
     alert("Cannot get current location");
   }
 }
+
+const btnNoti = document.querySelector('.btn-noti');
+btnNoti.addEventListener('click', () => {
+    axios.post('http://localhost:6796/od/list/1')
+    .then(response => {
+        console.log(response);
+        // alert('Você foi autenticado com sucesso!');
+        window.location.href = '/Codigo/FrontEnd/notificacoes.html';
+    })
+    .catch(error => {
+        console.log(error);
+        // alert('Falha na autenticação. Tente novamente');
+    });
+});

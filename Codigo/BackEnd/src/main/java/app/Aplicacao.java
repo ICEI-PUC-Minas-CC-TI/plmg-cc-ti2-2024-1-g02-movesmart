@@ -20,8 +20,9 @@ public class Aplicacao {
         // Configuração do CORS
         configureCors();
 
-        // Configuração dos endpoints para usuário
+        // Configuração dos endpoints
         configureUserRoute();
+        configureOdRoute();
     }
 
     // Retorna a porta do servidor
@@ -52,7 +53,7 @@ public class Aplicacao {
         });
     }
 
-    // Configuração das rotas
+    // Configuração das rotas para usuário
     private static void configureUserRoute() {
         post("/usuario", (request, response) -> {
             try {
@@ -107,7 +108,10 @@ public class Aplicacao {
                 return "Erro ao autenticar usuário: " + e.getMessage();
             }
         });
+    }
 
+    // Configuração das rotas para OD
+    private static void configureOdRoute() {
         post("/od/insert", (request, response) -> {
             try {
                 return odService.insert(request, response);
@@ -117,14 +121,49 @@ public class Aplicacao {
             }
         });
 
-        get("/od/:id", (request, response) -> odService.get(request, response));
+        get("/od/:id", (request, response) -> {
+            try {
+                return odService.get(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao buscar Origem-Destino: " + e.getMessage();
+            }
+        });
 
-        get("/od/list/:orderby", (request, response) -> odService.getAll(request, response));
+        get("/od/list/1", (request, response) -> {
+            try {
+                return odService.getAll(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao buscar lista de Origem-Destino: " + e.getMessage();
+            }
+        });
 
-        get("/od/update/:id", (request, response) -> odService.getToUpdate(request, response));
+        get("/od/update/:id", (request, response) -> {
+            try {
+                return odService.getToUpdate(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao buscar Origem-Destino para atualização: " + e.getMessage();
+            }
+        });
 
-        post("/od/update/:id", (request, response) -> odService.update(request, response));
+        post("/od/update/:id", (request, response) -> {
+            try {
+                return odService.update(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao atualizar Origem-Destino: " + e.getMessage();
+            }
+        });
 
-        get("/od/delete/:id", (request, response) -> odService.delete(request, response));
+        delete("/od/delete/:id", (request, response) -> {
+            try {
+                return odService.delete(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao deletar Origem-Destino: " + e.getMessage();
+            }
+        });
     }
 }
