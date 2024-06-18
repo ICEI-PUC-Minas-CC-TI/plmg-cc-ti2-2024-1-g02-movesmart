@@ -1,73 +1,73 @@
--- Schema
-CREATE SCHEMA IF NOT EXISTS movesmart;
 -- Table Usuario
-CREATE TABLE IF NOT EXISTS movesmart.usuario (
+CREATE TABLE IF NOT EXISTS Usuario (
     id_usuario SERIAL PRIMARY KEY,
-    nome VARCHAR(45),
-    login VARCHAR(45),
-    senha VARCHAR(45),
-    email VARCHAR(45),
-    telefone VARCHAR(45)
+    nome VARCHAR(80),
+    login VARCHAR(80),
+    senha VARCHAR(80),
+    email VARCHAR(80),
+    telefone VARCHAR(80)
 );
 
 -- Table OD
-CREATE TABLE IF NOT EXISTS movesmart.od (
+CREATE TABLE IF NOT EXISTS OD (
     id_od SERIAL PRIMARY KEY,
+    linha VARCHAR(80),
+    origem VARCHAR(80),
+    destino VARCHAR(80),
     horario TIME,
-    origem VARCHAR(45),
-    destino VARCHAR(45),
-    usuario_id_usuario INT NOT NULL,
-    CONSTRAINT fk_usuario_id_od FOREIGN KEY (usuario_id_usuario) REFERENCES movesmart.usuario (id_usuario) ON DELETE NO ACTION ON UPDATE NO ACTION
+    Usuario_id_usuario INT NOT NULL,
+    CONSTRAINT fk_Usuario_id_OD FOREIGN KEY (Usuario_id_usuario) REFERENCES Usuario (id_usuario) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 -- Table Onibus
-CREATE TABLE IF NOT EXISTS movesmart.onibus (
+CREATE TABLE IF NOT EXISTS Onibus (
     id_onibus SERIAL PRIMARY KEY,
-    numero VARCHAR(45)
+    numero VARCHAR(80)
 );
 
 -- Table Rota
-CREATE TABLE IF NOT EXISTS movesmart.rota (
+CREATE TABLE IF NOT EXISTS Rota (
     id_rota SERIAL PRIMARY KEY,
-    onibus_id_onibus INT NOT NULL,
-    CONSTRAINT fk_onibus_id_rota FOREIGN KEY (onibus_id_onibus) REFERENCES movesmart.onibus (id_onibus) ON DELETE NO ACTION ON UPDATE NO ACTION
+    Onibus_id_onibus INT NOT NULL,
+    CONSTRAINT fk_Onibus_id_Rota FOREIGN KEY (Onibus_id_onibus) REFERENCES Onibus (id_onibus) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 -- Table Ponto
-CREATE TABLE IF NOT EXISTS movesmart.ponto (
-    id_ponto SERIAL PRIMARY KEY,
-    logradouro VARCHAR(45),
+CREATE TABLE IF NOT EXISTS Ponto (
+    id_ponto SERIAL,
+    logradouro VARCHAR(80),
     numero INT,
-    rota_id_rota INT NOT NULL,
-    od_id_od INT NOT NULL,
-    CONSTRAINT fk_rota_id_ponto FOREIGN KEY (rota_id_rota) REFERENCES movesmart.rota (id_rota) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    CONSTRAINT fk_od_id_ponto FOREIGN KEY (od_id_od) REFERENCES movesmart.od (id_od) ON DELETE NO ACTION ON UPDATE NO ACTION
+    Rota_id_rota INT NOT NULL,
+    OD_id_od INT NOT NULL,
+    PRIMARY KEY (id_ponto, Rota_id_rota, OD_id_od),
+    CONSTRAINT fk_Rota_id_Ponto FOREIGN KEY (Rota_id_rota) REFERENCES Rota (id_rota) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    CONSTRAINT fk_OD_id_Ponto FOREIGN KEY (OD_id_od) REFERENCES OD (id_od) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 -- Table Horario
-CREATE TABLE IF NOT EXISTS movesmart.horario (
+CREATE TABLE IF NOT EXISTS Horario (
     id_horario SERIAL PRIMARY KEY,
     horario TIME,
-    onibus_id_onibus INT NOT NULL,
-    CONSTRAINT fk_onibus_id_horario FOREIGN KEY (onibus_id_onibus) REFERENCES movesmart.onibus (id_onibus) ON DELETE NO ACTION ON UPDATE NO ACTION
+    Onibus_id_onibus INT NOT NULL,
+    CONSTRAINT fk_Onibus_id_Horario FOREIGN KEY (Onibus_id_onibus) REFERENCES Onibus (id_onibus) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 -- Table Onibus_has_Ponto
-CREATE TABLE IF NOT EXISTS movesmart.onibus_has_ponto (
-    onibus_id_onibus INT NOT NULL,
-    pontos_id_ponto INT NOT NULL,
-    pontos_rota_id_rota INT NOT NULL,
-    pontos_od_id_od INT NOT NULL,
+CREATE TABLE IF NOT EXISTS Onibus_has_Ponto (
+    Onibus_id_onibus INT NOT NULL,
+    Pontos_id_ponto INT NOT NULL,
+    Pontos_Rota_id_rota INT NOT NULL,
+    Pontos_OD_id_od INT NOT NULL,
     PRIMARY KEY (
-        onibus_id_onibus,
-        pontos_id_ponto,
-        pontos_rota_id_rota,
-        pontos_od_id_od
+        Onibus_id_onibus,
+        Pontos_id_ponto,
+        Pontos_Rota_id_rota,
+        Pontos_OD_id_od
     ),
-    CONSTRAINT fk_onibus_id_onibus_has_ponto FOREIGN KEY (onibus_id_onibus) REFERENCES movesmart.onibus (id_onibus) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    CONSTRAINT fk_ponto_id_onibus_has_ponto FOREIGN KEY (
-        pontos_id_ponto,
-        pontos_rota_id_rota,
-        pontos_od_id_od
-    ) REFERENCES movesmart.ponto (id_ponto, rota_id_rota, od_id_od) ON DELETE NO ACTION ON UPDATE NO ACTION
+    CONSTRAINT fk_Onibus_id_Onibus_has_Ponto FOREIGN KEY (Onibus_id_onibus) REFERENCES Onibus (id_onibus) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    CONSTRAINT fk_Ponto_id_Onibus_has_Ponto FOREIGN KEY (
+        Pontos_id_ponto,
+        Pontos_Rota_id_rota,
+        Pontos_OD_id_od
+    ) REFERENCES Ponto (id_ponto, Rota_id_rota, OD_id_od) ON DELETE NO ACTION ON UPDATE NO ACTION
 );

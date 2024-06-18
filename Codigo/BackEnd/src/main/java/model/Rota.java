@@ -1,79 +1,39 @@
 package model;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Rota {
-    // atributos
-    private int id;
-    private String pontos_parada;
-    private Date horario;
-    private String transporte_associado;
+public class Rota 
+{
+    private int         idRota;
+    private List<Ponto> pontos;
 
-    // Construtor
-    public Rota() {
-        this.id = -1;
-        this.pontos_parada = "";
-        this.horario = new Date();
-        this.transporte_associado = "";
-    } // end Rota()
+    public Rota ( ) 
+    {
+        this.pontos = new ArrayList<>();
+    }
 
-    // Construtor Alternativo
-    public Rota(int id, String pontos_parada, Date horario, String transporte_associado) {
-        setId(id);
-        setPontos_parada(pontos_parada);
-        setHorario(horario);
-        setTransporte_associado(transporte_associado);
-    } // end Rota()
+    public Rota ( int idRota ) 
+    {
+        setIdRota( idRota );
+        this.pontos = new ArrayList<>();
+    }
 
-    // Retorna o id do transporte
-    public int getId() {
-        return id;
-    } // end getId()
+    public void setIdRota ( int idRota  ) { this.idRota = idRota       ; }
+    public void addPonto  ( Ponto ponto ) { this.pontos.add( ponto )   ; }
+    public void delPonto  ( Ponto ponto ) { this.pontos.remove( ponto ); }
 
-    // Atribui um id ao transporte
-    public void setId(int id) {
-        this.id = id;
-    } // end setId()
-
-    // Retorna o pontos_parada do transporte
-    public String getStatus() {
-        return pontos_parada;
-    } // end getStatus()
-
-    // Atribui um pontos_parada ao transporte
-    public void setPontos_parada(String pontos_parada) {
-        this.pontos_parada = pontos_parada;
-    } // end setPontos_parada()
-
-    // Retorna o horario do transporte
-    public Date getHorario() {
-        return horario;
-    } // end getHorario()
-
-    // Atribui um horario ao transporte
-    public void setHorario(Date horario) {
-        this.horario = horario;
-    } // end setHorario()
-
-    // Retorna a transporte_associado do transporte
-    public String getLocalizacao() {
-        return transporte_associado;
-    } // end getLocalizacao()
-
-    // Atribui uma transporte_associado ao transporte
-    public void setTransporte_associado(String transporte_associado) {
-        this.transporte_associado = transporte_associado;
-    } // end setTransporte_associado()
-
-    // 
-    @Override
-    public String toString() {
-        return "Rota [id=" + id + ", pontos_parada=" + pontos_parada + ", horario=" + horario + ", transporte_associado=" + transporte_associado + "]";
-    } // end toString()
+    public int         getIdRota ( ) { return ( this.idRota ); }
+    public List<Ponto> getPontos ( ) { return ( this.pontos ); }
 
     @Override
-    public boolean equals(Object obj) {
-        return (this.getId() == ((Rota) obj).getId());
-    } // end equals()
+    public String toString( ) {
+        return ( "Rota [id=" + idRota + ", pontos=" + pontos + "]" );
+    }
 
+    @Override
+    public boolean equals( Object obj ) 
+    {
+        return ( this.getIdRota( ) == ((Rota)obj).getIdRota( ));
+    }
 } // end class

@@ -4,8 +4,9 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-image: url(/Codigo/FrontEnd/img/wave.png); 
+    /* background-image: url(img/wave.png); */
     background-repeat: no-repeat;
+    /* color: #96e4c9; */
 }
 
 /* Menu de Navegacao */

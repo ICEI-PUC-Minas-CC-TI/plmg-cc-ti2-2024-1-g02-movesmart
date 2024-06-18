@@ -151,7 +151,7 @@ public class UsuarioService {
     public Object getAll(Request request, Response response) {
         List<Usuario> usuarios = usuarioDAO.getAll();
         if (usuarios != null) {
-           return new Gson().toJson(usuarios);
+            return new Gson().toJson(usuarios);
         } else {
             response.status(404); // 404 Not Found
             return "Nenhum usuário encontrado!";
@@ -196,4 +196,3 @@ public class UsuarioService {
         }
     }
 }
-

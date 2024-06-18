@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Sem Erro -->
+    <!-- <meta name="viewport" http-equiv="refresh" content=1;url="/od/list/1"> Com Erro -->
+    <!-- Link Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Link Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="css/notificacoes.css">
+    <title>MoveSmart - Notificações OD</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Itens de Navegação -->
+        <nav class="nav-bar">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="mapa.html">
+                        <button type="button" class="btn-nav btn btn-lg">Página Inicial</button>
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#"> cadastro
+                        <button type="button" class="btn-nav btn btn-lg">Cadastre-se</button>
+                    </a>
+                </li> -->
+            </ul>
+        </nav>
+    </header>
+    <!-- Fim Header -->
+
+    <main class="container" onload="onLoad()">
+        <h1 class="m-4 p-3 text-center">Escolha suas Notificações!</h1>
+        <input type="hidden" id="msg" name="msg" value="">
+        <UM-ACTION> <!-- Começo do Form -->
+            <table width="100%" align="center" class="dropdown" style="padding-top: 10px;">
+                <tr>
+                    <td class="p-2">
+                        <strong>&nbsp;Linha do Ônibus:</strong>
+                        <select class="form-select p-2 mx-1 my-2" id="onibus" name="onibus"
+                            onchange="linhaSelecionada()">
+                            <option value="">Selecione uma opção:</option>
+                            <!-- Aqui serão inseridas as opções do dropdown de origem -->
+                            <UM-ONIBUS>
+                        </select>
+                    </td>
+                    <td class="p-2">
+                        <strong>&nbsp;Origem:</strong>
+                        <select class="form-select p-2 mx-1 my-2" id="origem" name="origem" onchange="origemSelecionada()">
+                            <option value="">Selecione uma opção:</option>
+                            <!-- Aqui serão inseridas as opções do dropdown de origem -->
+                            <UM-ORIGEM>
+                        </select>
+                    </td>
+                    <td class="p-2">
+                        <strong>&nbsp;Destino:</strong>
+                        <select class="form-select p-2 mx-1 my-2" id="destino" name="destino" onchange="destinoSelecionada()">
+                            <option value="">Selecione uma opção:</option>
+                            <!-- Aqui serão inseridas as opções do dropdown de destino -->
+                            <UM-DESTINO>
+                        </select>
+                    </td>
+                    <td class="p-2">
+                        <strong>&nbsp;Horário:</strong>
+                        <select class="form-select p-2 mx-1 my-2" id="horario" name="horario" onchange="horaSelecionada()">
+                            <option value="">Selecione uma opção:</option>
+                            <!-- Aqui serão inseridas as opções do dropdown de horário -->
+                            <UM-HORARIO>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="5">
+                        <input class="btn-nav btn btn-primary m-5" id="btnAdd" type="submit" value="Adicionar">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <LISTAR-OD>
+    </main>
+
+    <!-- Script Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <!-- Link Script -->
+    <script type="text/javascript" src="js/notificacoes.js"></script>
+    <!--Script-->
+    <script>
+        function deletarOd( id, origem, destino, horario ) {
+            if( confirm( 'Deseja realmente excluir a Origem-Destino (' + origem + ' - ' + destino + ' - ' + horario + ')' + ' ?' ) ) {
+                location.href = '/od/delete/' + id;
+            }
+        }
+        function onLoad ( ) {
+            if( document.getElementById("msg").value != "" ) {
+                alert( document.getElementById("msg").value );
+            }
+        }
+        /* Funções de Teste */
+        function linhaSelecionada( ) {
+            var dropdown = document.getElementById("onibus");
+            var onibus = dropdown.value;
+            console.log("onibus:", onibus);
+        }
+        function origemSelecionada( ) {
+            var dropdown = document.getElementById("origem");
+            var origem = dropdown.value;
+            console.log("origem:", origem);
+        }
+        function destinoSelecionada( ) {
+            var dropdown = document.getElementById("destino");
+            var destino = dropdown.value;
+            console.log("destino:", destino);
+        }
+        function horaSelecionada( ) {
+            var dropdown = document.getElementById("horario");
+            var horario = dropdown.value;
+            console.log("horario:", horario);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,12 +1,14 @@
 package app;
 
 import service.UsuarioService;
+import service.OdService;
 
 import static spark.Spark.*;
 
 public class Aplicacao {
 
     private static UsuarioService usuarioService = new UsuarioService();
+    private static OdService odService = new OdService();
 
     static final String LOCAL_HOST = "http://127.0.0.1:5500";
 
@@ -18,8 +20,9 @@ public class Aplicacao {
         // Configuração do CORS
         configureCors();
 
-        // Configuração dos endpoints para usuário
+        // Configuração dos endpoints
         configureUserRoute();
+        configureOdRoute();
     }
 
     // Retorna a porta do servidor
@@ -30,7 +33,7 @@ public class Aplicacao {
     // Configuração do CORS
     private static void configureCors() {
         before((request, response) -> {
-            response.header("Access-Control-Allow-Origin", LOCAL_HOST);
+            response.header("Access-Control-Allow-Origin", "*");
             response.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
             response.header("Access-Control-Allow-Headers", "*");
         });
@@ -50,7 +53,7 @@ public class Aplicacao {
         });
     }
 
-    // Configuração das rotas
+    // Configuração das rotas para usuário
     private static void configureUserRoute() {
         post("/usuario", (request, response) -> {
             try {
@@ -103,6 +106,63 @@ public class Aplicacao {
             } catch (Exception e) {
                 response.status(500);
                 return "Erro ao autenticar usuário: " + e.getMessage();
+            }
+        });
+    }
+
+    // Configuração das rotas para OD
+    private static void configureOdRoute() {
+        post("/od/insert", (request, response) -> {
+            try {
+                return odService.insert(request, response);
+            } catch ( Exception e ) {
+                response.status(500);
+                return "Erro ao inserir Origem-Destino: " + e.getMessage();
+            }
+        });
+
+        get("/od/:id", (request, response) -> {
+            try {
+                return odService.get(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao buscar Origem-Destino: " + e.getMessage();
+            }
+        });
+
+        get("/od/list/1", (request, response) -> {
+            try {
+                return odService.getAll(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao buscar lista de Origem-Destino: " + e.getMessage();
+            }
+        });
+
+        get("/od/update/:id", (request, response) -> {
+            try {
+                return odService.getToUpdate(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao buscar Origem-Destino para atualização: " + e.getMessage();
+            }
+        });
+
+        post("/od/update/:id", (request, response) -> {
+            try {
+                return odService.update(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao atualizar Origem-Destino: " + e.getMessage();
+            }
+        });
+
+        delete("/od/delete/:id", (request, response) -> {
+            try {
+                return odService.delete(request, response);
+            } catch (Exception e) {
+                response.status(500);
+                return "Erro ao deletar Origem-Destino: " + e.getMessage();
             }
         });
     }

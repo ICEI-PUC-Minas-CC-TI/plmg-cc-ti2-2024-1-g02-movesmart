@@ -19,7 +19,7 @@ public class UsuarioDAO extends DAO {
     // Insere um usuário
     public boolean insert(Usuario usuario) {
         boolean status = false;
-        try (PreparedStatement st = conexao.prepareStatement("INSERT INTO usuarios (nome, email, telefone, login, senha) VALUES (?, ?, ?, ?, ?)")) {
+        try (PreparedStatement st = conexao.prepareStatement("INSERT INTO usuario (nome, email, telefone, login, senha) VALUES (?, ?, ?, ?, ?)")) {
             st.setString(1, usuario.getNome());
             st.setString(2, usuario.getEmail());
             st.setString(3, usuario.getTelefone());
@@ -36,7 +36,7 @@ public class UsuarioDAO extends DAO {
     // Atualiza um usuário
     public boolean update(Usuario usuario) {
         boolean status = false;
-        try (PreparedStatement st = conexao.prepareStatement("UPDATE usuarios SET nome = ?, email = ?, login = ?, senha = ?, telefone = ? WHERE id_usuario = ?")) {
+        try (PreparedStatement st = conexao.prepareStatement("UPDATE usuario SET nome = ?, email = ?, login = ?, senha = ?, telefone = ? WHERE id_usuario = ?")) {
             st.setString(1, usuario.getNome());
             st.setString(2, usuario.getEmail());
             st.setString(3, usuario.getLogin());
@@ -111,7 +111,7 @@ public class UsuarioDAO extends DAO {
     // Busca um usuário pelo login
     public Usuario getByUsername(String username) {
         Usuario usuario = null;
-        try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuarios WHERE login = ?")) {
+        try (PreparedStatement st = conexao.prepareStatement("SELECT * FROM usuario WHERE login = ?")) {
             st.setString(1, username);
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {

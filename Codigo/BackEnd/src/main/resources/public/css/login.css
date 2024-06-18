@@ -9,15 +9,8 @@
 body {
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
-}
-
-/* Imagem de fundo */
-.wave {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    z-index: -1;
+    background-image: url(../img/wave.png);
+    background-repeat: no-repeat;
 }
 
 /* Container principal */

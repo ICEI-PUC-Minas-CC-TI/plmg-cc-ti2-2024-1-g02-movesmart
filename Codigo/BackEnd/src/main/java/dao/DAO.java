@@ -4,53 +4,60 @@ import java.sql.*;
 import java.security.*;
 import java.math.*;
 
-public class DAO {
+public class DAO 
+{
 	protected Connection conexao;
 	
-	public DAO() {
+	public DAO ( ) {
 		conexao = null;
-	}
+	} // end DAO ( )
 	
-	public boolean conectar() {
-		String driverName = "org.postgresql.Driver";                    
-		String serverName = "localhost";
-		String mydatabase = "sistema"; // mudar conforme o DB a ser utilizado
-		int porta = 5432;
-		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
-		String username = "ti2cc";
-		String password = "ti@cc";
-		boolean status = false;
+	public boolean conectar( ) 
+	{
+		String  driverName = "org.postgresql.Driver";                    
+		String  serverName = "localhost";
+		String  mydatabase = "movesmart";
+		int     porta      = 5432;
+		String  url        = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
+		String  username   = "ti2cc";
+		String  password   = "ti@cc";
+		boolean status     = false;
 
-		try {
-			Class.forName(driverName);
-			conexao = DriverManager.getConnection(url, username, password);
-			status = (conexao == null);
-			System.out.println("Conexão efetuada com o postgres!");
-		} catch (ClassNotFoundException e) { 
-			System.err.println("Conexão NÃO efetuada com o postgres -- Driver não encontrado -- " + e.getMessage());
-		} catch (SQLException e) {
-			System.err.println("Conexão NÃO efetuada com o postgres -- " + e.getMessage());
+		try 
+		{
+			Class.forName( driverName );
+			conexao = DriverManager.getConnection( url, username, password );
+			status = ( conexao == null );
+			System.out.println( "Conexão efetuada com o postgres!" );
+		} 
+		catch( ClassNotFoundException e ) { 
+			System.err.println( "Conexão NÃO efetuada com o postgres -- Driver não encontrado -- " + e.getMessage( ) );
+		} 
+		catch( SQLException e ) {
+			System.err.println( "Conexão NÃO efetuada com o postgres -- " + e.getMessage( ) );
 		}
-
-		return status;
-	}
+		return ( status );
+	} // end conectar ( )
 	
-	public boolean close() {
+	public boolean close ( ) 
+	{
 		boolean status = false;
-		
-		try {
+		try 
+		{
 			conexao.close();
 			status = true;
-		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+		} 
+		catch( SQLException e ) {
+			System.err.println( e.getMessage( ) );
 		}
-		return status;
-	}
+		return ( status );
+	} // end close ( )
 	
-	
-	public static String toMD5Password(String senha) throws Exception {
-		MessageDigest m=MessageDigest.getInstance("MD5");
-		m.update(senha.getBytes(),0, senha.length());
-		return new BigInteger(1,m.digest()).toString(16);
-	}
-}
+	public static String toMD5Password ( String senha ) throws Exception 
+	{
+		MessageDigest m= MessageDigest.getInstance( "MD5" );
+		m.update( senha.getBytes() , 0, senha.length( ) );
+		return ( new BigInteger( 1, m.digest( ) ).toString( 16 ) );
+	} // end toMD5Password ( )
+
+} // end class DAO
