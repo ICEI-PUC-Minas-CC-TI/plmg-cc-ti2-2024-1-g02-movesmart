@@ -1,3 +1,4 @@
+/* CONSTRUIR O MAPA */
 const map = L.map("map");
 // Initializes map
 map.setView([51.505, -0.05], 13);
@@ -37,6 +38,26 @@ function error(err) {
   }
 }
 
+/* PESQUISAR E CHATBOT */
+document.querySelector('.btn-chat').addEventListener('click', function () {
+  const chatboxWrapper = document.querySelector('.chatbox-wrapper');
+  if (chatboxWrapper.style.display === 'block') {
+      chatboxWrapper.style.display = 'none';
+  } else {
+      chatboxWrapper.style.display = 'block';
+  }
+});
+
+document.querySelector('.btn-lupa').addEventListener('click', function () {
+  const searchBox = document.querySelector('.search-box');
+  if (searchBox.style.display === 'block') {
+      searchBox.style.display = 'none';
+  } else {
+      searchBox.style.display = 'block';
+  }
+});
+
+/* NÃO FUNCIONA */
 const btnNoti = document.querySelector('.btn-noti');
 btnNoti.addEventListener('click', () => {
     axios.post('http://localhost:6796/od/list/1')

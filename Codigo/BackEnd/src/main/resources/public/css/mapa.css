@@ -1,3 +1,53 @@
 #map { 
     height: 1000px; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background: #191919;
+  min-height: 100vh;
+  font-family: Montserrat, sans-serif;
+}
+
+nav a {
+  font-size: 40px;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+}
+
+nav {
+  position: fixed;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100vh;
+  background: #2cc48c;
+}
+
+@keyframes fadeIn {
+  100% {
+      opacity: 1
   }
+}
+
+/* Estilizar o container do mapa */
+#map {
+  /* Ajusta a altura do mapa para ocupar a altura total da tela */
+  height: 100vh;
+  /* Subtrai a largura da barra de navegação */
+  width: calc(100% - 60px);
+  /* Alinha o mapa com a margem da barra de navegação */
+  margin-left: 60px;
+  /* Posiciona o mapa de forma absoluta */
+  position: absolute;
+  top: 0;
+}
