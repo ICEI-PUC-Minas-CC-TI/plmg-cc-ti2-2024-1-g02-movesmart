@@ -13,4 +13,4 @@ O projeto MoveSmart tem como tema central o aprimoramento da experiência do usu
 ## Professores responsáveis
 
 * Max do Val Machado
-*Walisson Ferreira de Carvalho
+* Walisson Ferreira de Carvalho
