@@ -15,7 +15,7 @@
     <title>MoveSmart - Notificações OD</title>
 </head>
 
-<body>
+<body onload="onLoad()">
     <!-- Header -->
     <header>
         <!-- Itens de Navegação -->
@@ -26,20 +26,15 @@
                         <button type="button" class="btn-nav btn btn-lg">Página Inicial</button>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#"> cadastro
-                        <button type="button" class="btn-nav btn btn-lg">Cadastre-se</button>
-                    </a>
-                </li> -->
             </ul>
         </nav>
     </header>
     <!-- Fim Header -->
 
-    <main class="container" onload="onLoad()">
+    <main class="container">
         <h1 class="m-4 p-3 text-center">Escolha suas Notificações!</h1>
         <input type="hidden" id="msg" name="msg" value="">
-        <UM-ACTION> <!-- Começo do Form -->
+        <form> <!-- Começo do Form -->
             <table width="100%" align="center" class="dropdown" style="padding-top: 10px;">
                 <tr>
                     <td class="p-2">
@@ -48,7 +43,6 @@
                             onchange="linhaSelecionada()">
                             <option value="">Selecione uma opção:</option>
                             <!-- Aqui serão inseridas as opções do dropdown de origem -->
-                            <UM-ONIBUS>
                         </select>
                     </td>
                     <td class="p-2">
@@ -56,7 +50,6 @@
                         <select class="form-select p-2 mx-1 my-2" id="origem" name="origem" onchange="origemSelecionada()">
                             <option value="">Selecione uma opção:</option>
                             <!-- Aqui serão inseridas as opções do dropdown de origem -->
-                            <UM-ORIGEM>
                         </select>
                     </td>
                     <td class="p-2">
@@ -64,7 +57,6 @@
                         <select class="form-select p-2 mx-1 my-2" id="destino" name="destino" onchange="destinoSelecionada()">
                             <option value="">Selecione uma opção:</option>
                             <!-- Aqui serão inseridas as opções do dropdown de destino -->
-                            <UM-DESTINO>
                         </select>
                     </td>
                     <td class="p-2">
@@ -72,18 +64,33 @@
                         <select class="form-select p-2 mx-1 my-2" id="horario" name="horario" onchange="horaSelecionada()">
                             <option value="">Selecione uma opção:</option>
                             <!-- Aqui serão inseridas as opções do dropdown de horário -->
-                            <UM-HORARIO>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td align="center" colspan="5">
-                        <input class="btn-nav btn btn-primary m-5" id="btnAdd" type="submit" value="Adicionar">
+                        <input class="btn-nav btn btn-primary m-5" id="btnAdd" type="button" value="Adicionar"
+                            onclick="adicionarOD()">
                     </td>
                 </tr>
             </table>
         </form>
-        <LISTAR-OD>
+        
+        <!-- Tabela para listar as origens e destinos -->
+        <div id="tabela-od" class="mt-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Origem</th>
+                        <th scope="col">Destino</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-od">
+                    <!-- Aqui serão adicionadas as linhas de origem e destino -->
+                </tbody>
+            </table>
+        </div>
     </main>
 
     <!-- Script Bootstrap -->
@@ -92,40 +99,6 @@
         </script>
     <!-- Link Script -->
     <script type="text/javascript" src="js/notificacoes.js"></script>
-    <!--Script-->
-    <script>
-        function deletarOd( id, origem, destino, horario ) {
-            if( confirm( 'Deseja realmente excluir a Origem-Destino (' + origem + ' - ' + destino + ' - ' + horario + ')' + ' ?' ) ) {
-                location.href = '/od/delete/' + id;
-            }
-        }
-        function onLoad ( ) {
-            if( document.getElementById("msg").value != "" ) {
-                alert( document.getElementById("msg").value );
-            }
-        }
-        /* Funções de Teste */
-        function linhaSelecionada( ) {
-            var dropdown = document.getElementById("onibus");
-            var onibus = dropdown.value;
-            console.log("onibus:", onibus);
-        }
-        function origemSelecionada( ) {
-            var dropdown = document.getElementById("origem");
-            var origem = dropdown.value;
-            console.log("origem:", origem);
-        }
-        function destinoSelecionada( ) {
-            var dropdown = document.getElementById("destino");
-            var destino = dropdown.value;
-            console.log("destino:", destino);
-        }
-        function horaSelecionada( ) {
-            var dropdown = document.getElementById("horario");
-            var horario = dropdown.value;
-            console.log("horario:", horario);
-        }
-    </script>
 </body>
 
 </html>

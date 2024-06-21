@@ -39,3 +39,13 @@ img {
 .ft {
     background-color: black;
 }
+
+/* Estilo para a linha alternada com cor verde */
+.table-striped .od-item:nth-child(even) {
+    background-color: #d9f7d6; /* Verde claro */
+}
+
+/* Estilo para os botões de ação */
+.table .btn {
+    padding: 0.25rem 0.5rem;
+}
