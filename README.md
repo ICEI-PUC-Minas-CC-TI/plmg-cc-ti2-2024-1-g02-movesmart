@@ -13,8 +13,4 @@ O projeto MoveSmart tem como tema central o aprimoramento da experiência do usu
 ## Professores responsáveis
 
 * Max do Val Machado
-* Walisson
-
-## Instruções de utilização
-
-[Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.]
+*Walisson Ferreira de Carvalho
