@@ -10,7 +10,7 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 // Sets map data source and associates with map
 let marker, circle, zoomed;
-navigator.geolocation.watchPosition(success, error);
+// navigator.geolocation.watchPosition(success, error);
 function success(pos) {
   const lat = pos.coords.latitude;
   const lng = pos.coords.longitude;
