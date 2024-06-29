@@ -1,0 +1,70 @@
+**SPRINT 2**
+
+Grupo:
+Caio Faria Diniz;
+Felipe Bragança Godinho;
+Giuseppe Sena Cordeiro;
+Vinícius Miranda de Araújo;
+Yan Sabarense Coelho Silva.
+
+**MOVESMART**
+
+1. **Funções que o sistema deve executar:**
+   - Fornecer informações em tempo real sobre a localização e o status dos transportes públicos.
+   - Permitir aos usuários visualizar rotas.
+   - Planejar trajetos eficientes.
+   - Configurar e receber notificações personalizadas sobre atrasos, mudanças de rota e perturbações no serviço.
+   - Acesso a detalhes importantes sobre os serviços de transporte.
+   - Integração com dispositivos inteligentes (IoT) para obter dados em tempo real.
+   - Assistência virtual por meio de chatbots para fornecer suporte em tempo real.
+   - Otimização dinâmica de rotas com base nas condições de tráfego.
+
+2. **Como o sistema deve executar tais funções:**
+   - Coletando dados em tempo real dos veículos de transporte público.
+   - Processando e apresentando esses dados de forma acessível aos usuários através da plataforma web.
+   - Permitindo interação dos usuários para visualizar rotas, planejar trajetos e configurar notificações personalizadas.
+   - Utilizando sistemas inteligentes e IA para fornecer suporte em tempo real e otimizar rotas de acordo com as condições de tráfego.
+
+3. **Entidades, atributos, relacionamentos e restrições do banco de dados:**
+   - Entidades: 
+     - Usuário.
+     - Transporte. 
+     - Rota. 
+     - Notificação.
+   - Atributos: 
+     - Usuário tem id, login, senha, email; 
+     - Transporte tem id, localização, status, horários.
+     - Rota tem id, horario, transportes associado, ponto de parada.
+     - Notificação tem id, tipo, mensagem, timestamp.
+   - Relacionamentos: 
+     - Um usuário pode ter múltiplas notificações.
+     - Um transporte pode ter várias rotas.
+   - Cardinalidade:  
+     - Um usuário pode ter mais de um email.
+     - Uma notificação pode ter mais de um tipo.
+     - Um tranporte pode ter mais de horário.
+     - Uma rota pode ter mais de um transporte associado e mais de um ponto de parada. 
+     - Um ponto de parada pode ter vários horários.
+   - Restrições:
+     - Um usuário não pode configurar uma notificação para um transporte que não existe.
+     - Um transporte não pode passar por uma rota que não existe.
+
+4. **Implementação no SGBD relacional:**
+   - Cada entidade se tornaria uma tabela no banco de dados relacional.
+   - Os atributos seriam mapeados como colunas nas tabelas correspondentes.
+   - Os relacionamentos seriam representados por chaves estrangeiras que ligam as tabelas.
+   - Restrições de integridade referencial seriam aplicadas para garantir a consistência dos dados.
+
+   - Tabela de Usuário     -> | id_usuario | login | senha | email |
+   - Tabela de Notificação -> | id_notificacao | tipo | mensagem | timestamp |
+   - Tabela de Transporte  -> | id_transporte | status | horario | localizacao |
+   - Tabela de Rota        -> | id_rota | horario | transporte_associado | pontos_parada |
+
+5. **Elementos de interface (front-end) e navegação:**
+   - A interface do usuário inclui:
+     - Um mapa interativo para visualizar rotas e localização em tempo real dos veículos.
+     - Caixas de pesquisa para inserir origem e destino.
+     - Configurações para notificações personalizadas.
+     - Áreas para detalhes dos veículos e informações adicionais.
+   - A navegação entre esses elementos será feita através de menus, botões e links claramente identificados, permitindo aos usuários mover-se facilmente entre
+     diferentes funcionalidades da plataforma.

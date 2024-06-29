@@ -1,0 +1,152 @@
+** SPRINT 1 **
+
+// obs: com '*' são mais importantes
+
+* Qual é o tema e o nome do projeto?
+
+  O tema do projeto está relacionado ao aprimoramento da experiência do usuário no transporte público por meio do desenvolvimento de uma plataforma web. Nome do projeto é MoveSmart.
+
+* Qual é o problema tratado pelo projeto?
+
+  O projeto visa resolver alguns dos desafios comuns enfrentados pelos usuários de transporte público, oferecendo soluções para os seguintes problemas:
+
+  1. Falta de Informações em Tempo Real:** Muitas vezes, os usuários de transporte público não têm acesso a informações em tempo real sobre a localização 
+  e o status dos veículos. Isso pode levar a atrasos e incertezas ao planejar viagens.
+
+  2. Planejamento Ineficiente de Rotas:** Os usuários podem encontrar dificuldades ao planejar rotas eficientes, especialmente quando não têm conhecimento 
+  da disponibilidade atual dos transportes públicos. Isso pode resultar em escolhas de trajetos menos convenientes.
+
+  3. Falta de Transparência:** A falta de transparência nas informações do transporte público pode levar a mal-entendidos, frustrações e experiências de 
+  viagem insatisfatórias. Os usuários podem se sentir desconectados das operações em tempo real dos serviços de transporte.
+
+  4. Necessidade de Notificações Personalizadas:** Muitos usuários desejam receber informações personalizadas sobre atrasos, interrupções ou outras alterações
+  no serviço. A falta de um sistema de notificações personalizadas pode resultar em surpresas desagradáveis durante a viagem.
+
+  Ao abordar esses problemas, o projeto busca melhorar significativamente a experiência do usuário no transporte público, tornando-a mais conveniente, eficiente e transparente.
+
+* Para qual público o projeto se destina?
+
+  O projeto se destina a um amplo público de usuários de transporte público, incluindo:
+
+  1. Comutadores Diários:** Indivíduos que dependem do transporte público para suas deslocações diárias, como ir para o trabalho, escola ou outras atividades regulares.
+
+  2. Visitantes e Turistas:** Pessoas que não estão familiarizadas com a rede de transporte de uma determinada área e precisam de uma maneira eficiente de explorar a região.
+
+  3. Usuários Ocasionais:** Aqueles que não utilizam o transporte público regularmente, mas ocasionalmente dependem dele para determinadas viagens.
+
+  4. Planejadores de Rotas:** Pessoas que desejam planejar rotas eficientes e personalizadas para otimizar sua viagem.
+
+  5. Usuários em Tempo Real:** Indivíduos que valorizam informações em tempo real sobre a localização e os horários de chegada dos transportes públicos.
+
+  6. Pessoas com Mobilidade Reduzida:** Oferecendo informações detalhadas sobre acessibilidade e outros serviços adaptados para atender às necessidades específicas.
+
+  O objetivo é criar uma plataforma acessível e útil para uma variedade de usuários, melhorando a experiência de todos que dependem ou optam por utilizar o transporte público.
+
+* Quais foram as principais motivações para o desenvolvimento do projeto?
+
+  _ Melhorar a Experiência do Usuário: Facilitar a vida dos usuários, proporcionando uma experiência de transporte público mais conveniente, eficiente e confiável.
+
+  _ Fornecer Informações em Tempo Real: Atender à crescente demanda por informações em tempo real, permitindo que os usuários planejem suas viagens de maneira mais eficiente.
+
+* Qual é o objetivo do projeto?
+
+  O foco está em fornecer informações em tempo real sobre a localização e o status dos transportes públicos, permitindo que os usuários visualizem rotas, planejem trajetos eficientes, 
+  recebam notificações personalizadas e tenham acesso   a detalhes importantes sobre os serviços de transporte. O projeto busca abordar desafios comuns enfrentados pelos usuários, melhorando 
+  a transparência, a conveniência e a eficiência no uso do transporte público.
+
+* Que impacto o projeto trará para seu público e para a sociedade?
+
+  *1. Melhorar a Experiência do Usuário: Reconhecendo as frustrações e desafios enfrentados pelos usuários de transporte público, a motivação central é melhorar sua experiência, fornecendo 
+  informações claras, precisas e em tempo real para tornar as viagens mais eficientes e agradáveis.
+
+  2. Promover a Transparência: Buscar a transparência nas operações de transporte público, permitindo que os usuários tenham acesso fácil a informações sobre a localização dos veículos, 
+  horários de chegada e possíveis interrupções, promovendo assim uma experiência mais confiável e previsível.
+
+  *3. Otimizar a Eficiência no Deslocamento: Facilitar o planejamento de rotas eficientes para os usuários, reduzindo o tempo de espera, minimizando atrasos e otimizando o tempo gasto 
+  nas viagens diárias.
+
+  4. Acompanhar as Demandas Tecnológicas: Reconhecer a crescente dependência da sociedade em soluções tecnológicas para facilitar o dia a dia, o projeto visa integrar inovações digitais 
+  no setor de transporte público.
+
+  *5. Facilitar o Acesso à Mobilidade Urbana: Buscar garantir que a informação sobre os serviços de transporte público esteja acessível a todos, contribuindo assim para uma mobilidade urbana 
+  mais inclusiva.
+
+  6. Reduzir Impactos Ambientais: Ao tornar o transporte público mais eficiente, o projeto também contribui para incentivar opções de transporte mais sustentáveis, reduzindo a dependência de 
+  veículos individuais e, consequentemente, diminuindo os impactos ambientais.
+
+  7. Estimular a Utilização do Transporte Público: Ao oferecer uma experiência mais conveniente e confiável, o projeto busca promover o uso do transporte público como uma alternativa viável e 
+  atraente em comparação com outras formas de deslocamento.
+
+* Qual é o diferencial/inovação do projeto em relação ao que já existe?
+
+  1. Integração Completa em Tempo Real: Fornece informações em tempo real sobre a localização e o status de todos os transportes públicos, proporcionando uma visão instantânea e precisa para os 
+  usuários.
+
+  2. Planejamento Personalizado de Rotas Avançado: Oferece um sistema de planejamento de rotas altamente personalizável, levando em consideração preferências individuais, restrições e condições 
+  em tempo real para otimizar a experiência do usuário.
+
+  3. Notificações Personalizadas e Alertas Inteligentes: Permite que os usuários configurem notificações personalizadas, mantendo-os informados sobre atrasos, mudanças de rota ou qualquer perturbação 
+  no serviço, garantindo uma viagem mais tranquila.
+
+  4. Detalhes Abrangentes sobre Meios de Transporte: Apresenta informações detalhadas sobre cada veículo, incluindo capacidade, acessibilidade, horários previstos de chegada e itinerários completos, 
+  proporcionando uma compreensão mais completa do serviço
+
+* Como o projeto se sustentará? Quais são os mecanismos de monetização?
+
+  1. Publicidade Localizada: Integrar espaços publicitários na plataforma para empresas locais, permitindo que elas alcancem os usuários com anúncios relevantes e direcionados com base em 
+  sua localização e preferências.
+
+  2. Parcerias com Operadores de Transporte: Estabelecer parcerias comerciais com operadores de transporte público para integrar seus serviços diretamente na plataforma, proporcionando uma 
+  fonte de receita através de acordos de compartilhamento de receitas.
+
+* Qual é a jornada do usuário no sistema a ser desenvolvido?
+
+  MoveSmart
+	|_ Tela de Mapa
+		|_ Barra de Pesquisa
+		|	|_ Selecionar Rota
+		|		|_ Mudar Rota
+		|_ Ver todos os transportes disponiveis
+		
+* Quais são as principais entidades, atributos, relacionamento e restrições do banco de dados do projeto?
+
+  _ Entidades:
+  |
+  |_ Usuário:
+  |  Atributos: ID (chave primária), nome, email, senha, preferências de notificação.
+  |
+  |_ Veículo:
+  |  Atributos: ID (chave primária), tipo de veículo, capacidade, acessibilidade.
+  |
+  |_ Rota:
+  |  Atributos: ID (chave primária), pontos de parada, horários, veículos associados.
+  |
+  |_ Notificação:
+     Atributos: ID (chave primária), tipo de notificação, destinatário, mensagem, timestamp.
+
+  _ Relacionamentos:
+  |
+  |_ Um usuário pode ter várias notificações, mas uma notificação pertence a um único usuário (relacionamento 1 para N entre Usuário e Notificação).
+  |
+  |_ Um veículo pode estar associado a várias rotas, mas uma rota pertence a um único veículo (relacionamento 1 para N entre Veículo e Rota).
+  |
+  |_ Uma rota pode ter vários pontos de parada, e um ponto de parada pode pertencer a várias rotas (relacionamento N para N entre Rota e Ponto de Parada, exigindo uma tabela de junção).
+
+  _ Restrições:
+  |_ Chaves Primárias: Garantir que as chaves primárias sejam únicas e não nulas para cada entidade.
+  |
+  |_ Chaves Estrangeiras: Implementar chaves estrangeiras para garantir a integridade referencial, conectando entidades relacionadas.
+  |
+  |_ Restrições de Atributos: Certificar-se de que os atributos tenham restrições apropriadas, como tipos de dados corretos, limites de comprimento, entre outros.
+
+* Quais são os recursos de sistemas inteligentes e inteligência artificial a serem adotados no projeto?
+
+  - Integração com Dispositivos Inteligentes:
+  |_ Integração com dispositivos IoT (Internet of Things) para obter dados em tempo real, como sensores de tráfego, câmeras de vigilância e informações meteorológicas.
+
+  - Assistência Virtual (Chatbots):
+  |_ Implementação de chatbots para fornecer assistência virtual em tempo real, respondendo a perguntas dos usuários, fornecendo informações sobre o serviço e auxiliando na navegação pela plataforma.
+
+  - Otimização Dinâmica de Rotas:
+  |_ Sistemas que adaptam dinamicamente as rotas com base nas condições de tráfego em tempo real, permitindo ajustes contínuos para minimizar atrasos.
+

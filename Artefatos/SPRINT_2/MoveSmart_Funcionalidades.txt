@@ -1,0 +1,12 @@
+## Tabela de Funcinalidades do Sistema:
+
+| Recursos                                    | Descrição                                                                                      |
+|---------------------------------------------|------------------------------------------------------------------------------------------------|
+| Informações em tempo real                   | Fornecimento de dados atualizados sobre a localização e o status dos transportes públicos.     |
+| Visualização de rotas                       | Permite aos usuários ver as rotas disponíveis.                                                 |
+| Planejamento de trajetos eficientes         | Ajuda os usuários a planejar rotas eficientes.                                                 |
+| Notificações personalizadas                 | Configuração e recebimento de notificações sobre atrasos, mudanças de rota e perturbações.     |
+| Detalhes dos serviços de transporte         | Acesso a informações importantes sobre os serviços de transporte.                              |
+| Integração com dispositivos IoT             | Integração com dispositivos inteligentes para obter dados em tempo real.                       |
+| Assistência virtual via chatbots            | Suporte em tempo real fornecido por meio de assistência virtual.                               |
+| Otimização dinâmica de rotas                | Ajuste dinâmico de rotas com base nas condições de tráfego em tempo real.                      |

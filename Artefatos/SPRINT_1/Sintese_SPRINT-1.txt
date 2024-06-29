@@ -1,0 +1,87 @@
+**SPRINT 1**
+
+Grupo:
+Caio Faria Diniz;
+Felipe Bragança Godinho;
+Giuseppe Sena Cordeiro;
+Vinícius Miranda de Araújo;
+Yan Sabarense Coelho Silva.
+
+**MOVESMART**
+
+O projeto MoveSmart tem como tema central o aprimoramento da experiência do usuário no transporte público, por meio do 
+desenvolvimento de uma plataforma web inovadora. O objetivo é oferecer soluções para desafios comuns enfrentados pelos 
+usuários, proporcionando uma jornada mais eficiente e satisfatória. Abaixo estão algumas melhorias e refinamentos para 
+o tema do projeto:
+
+**Tema do Projeto:**
+O projeto MoveSmart visa revolucionar a experiência do usuário no transporte público, introduzindo uma plataforma web 
+avançada que fornece informações em tempo real, planejamento personalizado de rotas, notificações inteligentes e detalhes 
+abrangentes sobre os meios de transporte. Ao superar desafios como a falta de transparência e a necessidade de notificações
+personalizadas, o MoveSmart busca tornar as viagens mais eficientes, confiáveis e convenientes para uma ampla variedade de usuários.
+
+**Principais Refinamentos:**
+1. **Informações em Tempo Real:**
+   - Muitas vezes, usuários de transporte público enfrentam desafios devido à falta de acesso a informações em tempo real 
+sobre a localização e o status dos veículos. O MoveSmart oferece uma solução abrangente para superar essas limitações, 
+fornecendo dados precisos e instantâneos.
+
+2. **Planejamento Eficiente de Rotas:**
+   - A dificuldade em planejar rotas eficientes é um ponto de dor comum para os usuários. O MoveSmart apresenta um sistema 
+de planejamento altamente personalizável, adaptando-se às preferências individuais e às condições em tempo real para otimizar 
+a experiência do usuário.
+
+3. **Notificações Personalizadas e Alertas Inteligentes:**
+   - Reconhecendo a necessidade de informações personalizadas, o MoveSmart permite que os usuários configurem notificações 
+que mantêm todos informados sobre atrasos, mudanças de rota e perturbações no serviço, garantindo viagens mais tranquilas.
+
+4. **Detalhes Abrangentes sobre Meios de Transporte:**
+   - Com um foco especial na experiência do usuário, o MoveSmart oferece informações detalhadas sobre cada veículo, incluindo 
+capacidade, acessibilidade, horários previstos de chegada e itinerários completos, proporcionando uma compreensão mais completa do serviço.
+
+**Público-Alvo:**
+O MoveSmart se destina a um amplo público, incluindo comutadores diários, visitantes, usuários ocasionais, planejadores de rotas 
+e pessoas com mobilidade reduzida. A plataforma é projetada para atender às diversas necessidades de uma comunidade urbana, 
+proporcionando uma solução acessível e eficaz para todos os usuários de transporte público.
+
+**Motivações para o Desenvolvimento do Projeto:**
+O projeto é impulsionado por uma série de motivações, incluindo o desejo de melhorar a experiência do usuário, fornecer informações 
+em tempo real, promover a transparência, otimizar a eficiência no deslocamento, acompanhar as demandas tecnológicas, facilitar o 
+acesso à mobilidade urbana e reduzir impactos ambientais. Essas motivações refletem o compromisso em criar uma solução abrangente e 
+centrada no usuário.
+
+**Objetivo do Projeto:**
+O MoveSmart tem como objetivo principal fornecer informações em tempo real sobre a localização e o status dos transportes públicos, 
+permitindo que os usuários visualizem rotas, planejem trajetos eficientes, recebam notificações personalizadas e acessem detalhes 
+importantes sobre os serviços de transporte. A ênfase está em abordar desafios comuns enfrentados pelos usuários, melhorando a transparência, 
+a conveniência e a eficiência no uso do transporte público.
+
+**Impacto do Projeto na Sociedade:**
+O MoveSmart pretende ter um impacto significativo na sociedade, melhorando a experiência do usuário, promovendo a transparência nas 
+operações de transporte público, otimizando a eficiência no deslocamento e estimulando a utilização do transporte público como uma 
+alternativa sustentável. Além disso, busca contribuir para a redução de impactos ambientais, fornecendo informações acessíveis a 
+todos os usuários e promovendo uma mobilidade urbana mais inclusiva.
+
+**Diferencial/Inovação do Projeto:**
+O MoveSmart se destaca pela integração completa em tempo real, planejamento personal
+
+izado de rotas avançado, notificações personalizadas e alertas inteligentes, bem como pela apresentação de detalhes abrangentes sobre 
+meios de transporte. Esses diferenciais proporcionam aos usuários uma experiência única e eficiente, superando as limitações das soluções 
+existentes no mercado.
+
+**Sustentabilidade do Projeto:**
+A sustentabilidade do MoveSmart é garantida por meio de mecanismos de monetização como publicidade localizada e parcerias com operadores 
+de transporte público. Esses modelos de receita fornecem uma base financeira sólida para o projeto, garantindo sua continuidade e capacidade 
+de oferecer melhorias contínuas.
+
+**Jornada do Usuário:**
+A jornada do usuário no MoveSmart é projetada para ser intuitiva e eficiente. Os usuários começam explorando o mapa, utilizando a barra 
+de pesquisa para selecionar rotas ou pontos de interesse. A visualização de todos os transportes disponíveis é facilitada, proporcionando
+uma experiência de navegação simplificada e orientada pelo usuário.
+
+**Recursos de Sistemas Inteligentes e IA:**
+O MoveSmart incorpora recursos de sistemas inteligentes e inteligência artificial, como integração com dispositivos inteligentes (IoT) para 
+obter dados em tempo real, assistência virtual por meio de chatbots para fornecer suporte em tempo real e otimização dinâmica de rotas para 
+ajustes contínuos com base nas condições de tráfego. Esses recursos avançados garantem uma experiência personalizada e adaptável para os usuários.
+
+O projeto MoveSmart destaca-se como uma solução abrangente e inovadora, alinhada às expectativas e necessidades crescentes dos usuários de transporte público.

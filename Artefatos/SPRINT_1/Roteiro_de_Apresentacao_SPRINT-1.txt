@@ -1,0 +1,40 @@
+**Roteiro de Apresentação (3 minutos no máximo):**
+
+**Slide 1: Tema do Projeto (0:00 - 0:20)**
+- Bom dia todos! Hoje, estamos empolgados em apresentar o resultado da nossa Sprint 1 no projeto MoveSmart.
+
+**Slide 2: Desafios (0:20 - 0:40)**
+- Nosso projeto nasceu da identificação de desafios comuns no transporte público. A falta de informações em tempo 
+  real, planejamento ineficiente de rotas e a necessidade de notificações personalizadas são alguns deles.
+
+**Slide 3: Público-Alvo (0:40 - 1:00)**
+- Para quem desenvolvemos o MoveSmart? Nosso público-alvo abrange desde comutadores diários até visitantes e pessoas 
+  com mobilidade reduzida, garantindo uma solução acessível a todos.
+
+**Slide 4: Objetivos (1:00 – 1:20)**
+- Nossos objetivos são claros: fornecer informações em tempo real, promover transparência e otimizar a eficiência no 
+  transporte público. O foco é melhorar a experiência do usuário.
+
+**Slide 5: Diferencial (1:20 – 1:40)**
+- O MoveSmart se destaca pela integração em tempo real, planejamento personalizado de rotas, notificações inteligentes 
+  e detalhes abrangentes sobre meios de transporte. Estamos inovando para oferecer a melhor experiência possível.
+
+**Slide 6: Mecanismos de Monetização (1:40 – 2:00)**
+- E como vamos manter o MoveSmart sustentável? Através de publicidade localizada e parcerias estratégicas com operadores 
+ de transporte público.
+
+**Slide 7: Fluxo de Usuário (2:00 - 2:20)**
+- Vamos explorar a jornada do usuário no MoveSmart. Desde a pesquisa de rotas até a visualização de todos os transportes
+  disponíveis, nossa plataforma é intuitiva e eficiente.
+
+**Slide 8: Banco de Dados (2:20 - 2:40)**
+- Nosso banco de dados é robusto, com entidades como Usuário, Veículo, Rota e Notificação. Garantimos integridade referencial
+  e restrições adequadas para uma experiência confiável.
+
+**Slide 9: Inteligência Artificial (2:40 – 2:50)**
+- Finalmente, incorporamos inteligência artificial. Com integração IoT para dados em tempo real, chatbots para assistência 
+  virtual e otimização dinâmica de rotas, oferecemos uma experiência adaptável e personalizada.
+
+**Encerramento (2:50 – 3:00 )**
+- Em resumo, o MoveSmart é mais do que uma plataforma de transporte. É uma solução abrangente, centrada no usuário, alinhada 
+  às necessidades da sociedade moderna. Obrigado por nos acompanhar. Estamos ansiosos para compartilhar mais nas próximas etapas!
