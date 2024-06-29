@@ -1,31 +1,32 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: MoveSmart
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Faria Diniz
+    given-names: Caio
+  - family-names: Bragança Godinho 
+    given-names: Felipe
+  - family-names: Sena Cordeiro
+    given-names: Giuseppe
+  - family-names: Miranda de Araújo
+    given-names: Vinícius
+  - family-names: Sabarense Coelho Silva  
+    given-names: Yan
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: do Val Machado
+    given-names: Max
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Ferreira de Carvalho
+    given-names: Walisson
 keywords:
-  - 
-  - 
-repository-code: 
+  - Mobilidade Urbana
+  - Eficiência
+  - Notificações personalizadas
+  - Rotas personalizadas
+  - Sistema Inteligente (ChatBot)
+repository-code: https://github.com/ICEI-PUC-Minas-CC-TI/plmg-cc-ti2-2024-1-g02-movesmart
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
+date-released: 2024-06-21
